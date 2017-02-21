@@ -2,7 +2,7 @@
 
 namespace Tnb
 {
-	public partial class TnbPage : ContentPage
+	public partial class TnbPage : TabbedPage
 	{
 		public TnbPage()
 		{

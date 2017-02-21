@@ -7,6 +7,7 @@ namespace Tnb
 	{
 
 		public string Channel { get; set; }
+		public string ChannelShow { get; set; }
 		public string ShortName { get; set; } //will be used for jump lists
 
 

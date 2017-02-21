@@ -32,7 +32,10 @@ namespace Tnb
 		{
 			get
 			{
-				return ScheduleHour + ":" + ScheduleMinute;
+				string hour = ScheduleHour;
+				if (hour.Length < 2) hour = "0" + hour;
+
+				return hour + ":" + ScheduleMinute;
 			}
 		}
 

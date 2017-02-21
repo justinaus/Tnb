@@ -1,5 +1,72 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage"
+		Icon="Images/today.png" Title="중계">
+	<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+	</ContentPage.Padding>
 	<ContentPage.Content>
+		<StackLayout>
+			<ListView  x:Name="listViewBroadcastGame"
+					ItemsSource="{Binding broadcastModelList}"
+					GroupDisplayBinding="{Binding Channel}"
+        			IsGroupingEnabled="true"
+					HasUnevenRows="true"
+					SeparatorColor="#CCCCCC">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="20, 20, 20, 20">
+								<Label Text="{Binding Title}"
+                                TextColor="#333333"
+									FontSize="Medium"
+										x:Name="labelTitle">
+									<Label.FontFamily>
+								        <OnPlatform x:TypeArguments="x:String">
+								            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
+								            <OnPlatform.Android></OnPlatform.Android>
+								            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+								        </OnPlatform>
+								    </Label.FontFamily>
+								</Label>
+
+                                <Label Text="{Binding Time}"
+                                TextColor="Gray"
+									FontSize="Small">
+									<Label.FontFamily>
+								        <OnPlatform x:TypeArguments="x:String">
+								            <OnPlatform.iOS>NanumGothicLight</OnPlatform.iOS>
+								            <OnPlatform.Android></OnPlatform.Android>
+								            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+								        </OnPlatform>
+								    </Label.FontFamily>
+								</Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+			<ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell Height="30" >
+                        <StackLayout Orientation="Horizontal" 
+									VerticalOptions="Center"
+									Padding="15,0,15,0">
+								<Label Text="{Binding ChannelShow}"
+                                TextColor="#333333"
+									FontSize="Small">
+									<Label.FontFamily>
+								        <OnPlatform x:TypeArguments="x:String">
+								            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
+								            <OnPlatform.Android></OnPlatform.Android>
+								            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+								        </OnPlatform>
+								    </Label.FontFamily>
+								</Label>
+							</StackLayout>
+						</ViewCell>>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+        </ListView>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

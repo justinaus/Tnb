@@ -66,6 +66,8 @@ namespace Tnb
 		{
 			BroadcastModelGroup group = new BroadcastModelGroup();
 			group.Channel = strChannel;
+			group.ChannelShow = getChannelShow(strChannel);
+
 
 			ObservableCollectionCustomized<IBroadcastModel> gotModelList = await getSpotvData( DateTimeCurrent, SpotvType.DAY_PART_MORNING, strChannel );
 			group.AddRange( gotModelList );
@@ -74,7 +76,7 @@ namespace Tnb
 			gotModelList = await getSpotvData(DateTimeCurrent, SpotvType.DAY_PART_NIGHT, strChannel);
 			group.AddRange(gotModelList);
 
-			group.Add(new SpotvModel( "hello world", "09", "30" ) );
+			//group.Add(new SpotvModel( "hello world", "holly", "wood" ) );
 
 			return group;
 		}
@@ -142,6 +144,27 @@ namespace Tnb
 			}
 
 			return listRet;
+		}
+
+
+		private string getChannelShow( string strChannel )
+		{
+			string strRet = "";
+
+			switch ( strChannel )
+			{
+				case Spotv1Type.CHANNEL:
+					strRet = Spotv1Type.CHANNEL_SHOW;
+					break;
+				case Spotv2Type.CHANNEL:
+					strRet = Spotv2Type.CHANNEL_SHOW;
+					break;
+				case SpotvPlusType.CHANNEL:
+					strRet = SpotvPlusType.CHANNEL_SHOW;
+					break;
+			}
+
+			return strRet;
 		}
 
 

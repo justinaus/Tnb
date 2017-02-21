@@ -6,6 +6,8 @@ namespace Tnb
 
 		public const string CHANNEL = "spotvp";
 
+		public const string CHANNEL_SHOW = "spotv plus";
+
 
 		public SpotvPlusType()
 		{
