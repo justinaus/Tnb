@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.PopupWebviewPage">
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
-			<ContentView x:Name="cv" VerticalOptions="FillAndExpand" />
-            <StackLayout Orientation="Horizontal" Padding="10,0,10,0" 
-					HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"
-					BackgroundColor="Fuchsia">
-				<Button Text="Close" HorizontalOptions="Start" Clicked="closeClicked" />
-                <Button Text="Back" Clicked="backClicked" />
-                <Button Text="Forward" Clicked="forwardClicked" />
-				<Button Text="Open Safari" HorizontalOptions="EndAndExpand" Clicked="openSafariClicked" />
+		<StackLayout Orientation="Vertical" BackgroundColor="Black" HorizontalOptions="Fill">
+			<StackLayout.Padding>
+				<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+			</StackLayout.Padding>
+			<ContentView x:Name="cv" VerticalOptions="FillAndExpand"
+				 Margin="0,0,0,-6" />
+			<StackLayout Orientation="Horizontal"
+					HorizontalOptions="FillAndExpand" VerticalOptions="End"
+					BackgroundColor="Silver" Padding="10,0,10,0">
+				<Button Text="x" HorizontalOptions="FillAndExpand" Clicked="closeClicked" />
+                <Button Text="b" Clicked="backClicked" HorizontalOptions="FillAndExpand" />
+                <Button Text="f" Clicked="forwardClicked" HorizontalOptions="FillAndExpand" />
+				<Button Text="s" HorizontalOptions="FillAndExpand" Clicked="openSafariClicked" />
             </StackLayout>
 
         </StackLayout>

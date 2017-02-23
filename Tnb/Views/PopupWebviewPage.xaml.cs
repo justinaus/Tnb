@@ -30,7 +30,7 @@ namespace Tnb
 
 		public void closeClicked( object sender, EventArgs e )
 		{
-
+			Navigation.PopModalAsync();
 		}
 		public void backClicked(object sender, EventArgs e)
 		{

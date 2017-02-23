@@ -32,17 +32,30 @@ namespace Tnb
 		}
 
 
-		private void OnSelectedItem( object sender, EventArgs e )
+		private void OnSelectedItem( object sender, SelectedItemChangedEventArgs e )
 		{
+			if (e.SelectedItem == null)
+			{
+				return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+			}
+
+			listViewBroadcastGame.SelectedItem = null;
+
 			if (webViewPage == null) webViewPage = new PopupWebviewPage();
 
-			//Application.Current.MainPage = webViewPage;
+			const string URL = "https://watch.nba.com";
+			webViewPage.OpenURL(URL);
 
+			Debug.WriteLine("123");
+
+			//Application.Current.MainPage = webViewPage;
 			Navigation.PushModalAsync( webViewPage );
 
-			const string URL = "https://watch.nba.com";
+			Debug.WriteLine( "456" + listViewBroadcastGame );
 
-			webViewPage.OpenURL( URL );
+			Debug.WriteLine("789" + listViewBroadcastGame.SelectedItem);
+
+
 		}
 
 
