@@ -63,5 +63,9 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>

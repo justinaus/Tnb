@@ -6,16 +6,18 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using Xamarin.Forms;
+using System.ComponentModel;
 
 namespace Tnb
 {
 	public class BroadcastViewModel : BaseViewModel, IHandleViewAppearing
 	{
 
-		private DateTime dateTimeCurrent;
+		private DateTime DateTimeCurrent;
+		private DateTime DateTimeToday;
 
 		public ObservableCollectionCustomized<BroadcastModelGroup> broadcastModelList = new ObservableCollectionCustomized<BroadcastModelGroup>();
-
 
 
 		public BroadcastViewModel()
@@ -27,11 +29,16 @@ namespace Tnb
 		public void OnViewAppearing()
 		{
 			//2017-02-12 오후 5:30:13
-			DateTime dateTimeNow = DateTime.Now;
+			DateTime DateTimeNow = DateTime.Now;
 
-			if ( !getIsSameDate(dateTimeNow))
+			if ( !getIsSameDate( DateTimeToday, DateTimeNow))
 			{
-				DateTimeCurrent = DateTime.Now;
+				// day changed!
+				DateTimeToday = DateTimeNow;
+
+				DateTimeCurrent = DateTimeToday;
+
+				onChangedCurrentDate();
 			}
 			else {
 				Debug.WriteLine( "same date!!!!!!" );
@@ -39,23 +46,48 @@ namespace Tnb
 		}
 
 
-		private async Task onChangedCurrentDate(DateTime dateTime)
+
+
+		private async Task onChangedCurrentDate()
 		{
+			Debug.WriteLine( "onChangedCurrentDate" +  DateTimeCurrent.Day );
+
+			OnPropertyChanged("CurrentDate");
+
+			broadcastModelList.Clear();
+
 			await getSpotvDataAll( DateTimeCurrent );
 		}
+
+
+		public void changeDate( bool bNext )
+		{
+			Debug.WriteLine( "click change" );
+
+			if (bNext)
+			{
+				DateTimeCurrent = DateTimeCurrent.AddDays( 1 );
+			}
+			else {
+				DateTimeCurrent = DateTimeCurrent.AddDays( -1 );
+			}
+
+			onChangedCurrentDate();
+		}
+
 
 
 		private async Task<ObservableCollectionCustomized<BroadcastModelGroup>> getSpotvDataAll(DateTime dateTime) 
 		{
 			//broadcastModelList.Clear();
 
-			BroadcastModelGroup group = await getSpotvDataByChannel( dateTime, Spotv1Type.CHANNEL );
+			BroadcastModelGroup group = await getSpotvDataByChannel( dateTime, ChannelStruct.SPOTV_ONE );
 			if ( group.Count > 0 )	broadcastModelList.Add(group);
 
-			group = await getSpotvDataByChannel(dateTime, Spotv2Type.CHANNEL);
+			group = await getSpotvDataByChannel(dateTime, ChannelStruct.SPOTV_TWO );
 			if (group.Count > 0) broadcastModelList.Add(group);
 
-			group = await getSpotvDataByChannel(dateTime, SpotvPlusType.CHANNEL);
+			group = await getSpotvDataByChannel(dateTime, ChannelStruct.SPOTV_PLUS );
 			if (group.Count > 0) broadcastModelList.Add(group);
 
 			return broadcastModelList;
@@ -68,12 +100,11 @@ namespace Tnb
 			group.Channel = strChannel;
 			group.ChannelShow = getChannelShow(strChannel);
 
-
-			ObservableCollectionCustomized<IBroadcastModel> gotModelList = await getSpotvData( DateTimeCurrent, SpotvType.DAY_PART_MORNING, strChannel );
+			ObservableCollectionCustomized<IBroadcastModel> gotModelList = await getSpotvData( DateTimeCurrent, SpotvURLStruct.DAY_PART_MORNING, strChannel );
 			group.AddRange( gotModelList );
-			gotModelList = await getSpotvData(DateTimeCurrent, SpotvType.DAY_PART_EVENING, strChannel);
+			gotModelList = await getSpotvData(DateTimeCurrent, SpotvURLStruct.DAY_PART_EVENING, strChannel);
 			group.AddRange(gotModelList);
-			gotModelList = await getSpotvData(DateTimeCurrent, SpotvType.DAY_PART_NIGHT, strChannel);
+			gotModelList = await getSpotvData(DateTimeCurrent, SpotvURLStruct.DAY_PART_NIGHT, strChannel);
 			group.AddRange(gotModelList);
 
 			//group.Add(new SpotvModel( "hello world", "holly", "wood" ) );
@@ -89,7 +120,7 @@ namespace Tnb
 
 			string strParams = "?y=" + dateTime.Year + "&m=" + dateTime.Month + "&d=" + dateTime.Day + "&dayPart=" + strDayPart + "&ch=" + strChannel;
 			//HttpResponseMessage response = await client.GetAsync("http://www.spotv.net/data/json/schedule/daily.json2.asp?y=2017&m=2&d=14&dayPart=morning&ch=spotv2");
-			HttpResponseMessage response = await client.GetAsync(SpotvType.URL_SPOTV + SpotvType.URL_SPOTV_DAILY + strParams);
+			HttpResponseMessage response = await client.GetAsync(SpotvURLStruct.URL_SPOTV + SpotvURLStruct.URL_SPOTV_DAILY + strParams);
 
 			HttpContent content = response.Content;
 
@@ -153,14 +184,14 @@ namespace Tnb
 
 			switch ( strChannel )
 			{
-				case Spotv1Type.CHANNEL:
-					strRet = Spotv1Type.CHANNEL_SHOW;
+				case ChannelStruct.SPOTV_ONE:
+					strRet = ChannelStruct.SPOTV_ONE_SHOW;
 					break;
-				case Spotv2Type.CHANNEL:
-					strRet = Spotv2Type.CHANNEL_SHOW;
+				case ChannelStruct.SPOTV_TWO:
+					strRet = ChannelStruct.SPOTV_TWO_SHOW;
 					break;
-				case SpotvPlusType.CHANNEL:
-					strRet = SpotvPlusType.CHANNEL_SHOW;
+				case ChannelStruct.SPOTV_PLUS:
+					strRet = ChannelStruct.SPOTV_PLUS_SHOW;
 					break;
 			}
 
@@ -169,25 +200,22 @@ namespace Tnb
 
 
 
-		private bool getIsSameDate(DateTime dateTimeTarget)
+		private bool getIsSameDate(DateTime dateTimeTarget0, DateTime dateTimeTarget1)
 		{
-			return dateTimeTarget.Date == DateTimeCurrent.Date && dateTimeTarget.Month == DateTimeCurrent.Month;
+			return dateTimeTarget0.Date == dateTimeTarget1.Date && dateTimeTarget0.Month == dateTimeTarget1.Month;
 		}
 
 
-		private DateTime DateTimeCurrent
+
+
+		public string CurrentDate
 		{
 			get
 			{
-				return dateTimeCurrent;
-			}
-			set
-			{
-				dateTimeCurrent = value;
-
-				onChangedCurrentDate(value);
+				return DateTimeCurrent.Month + " / " + DateTimeCurrent.Day + " (" + DateUtil.getDayOfWeekForKorean(DateTimeCurrent.DayOfWeek) + ")";
 			}
 		}
+
 
 
 

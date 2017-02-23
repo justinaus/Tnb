@@ -19,7 +19,12 @@ namespace Tnb.iOS
 			Xamarin.Calabash.Start();
 #endif
 
+			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
+			UIApplication.SharedApplication.SetStatusBarHidden(false, false);
+
 			LoadApplication(new App());
+
+			//UIApplication.SharedApplication.SetStatusBarStyle( UIStatusBarStyle.LightContent, false  );
 
 			return base.FinishedLaunching(app, options);
 		}

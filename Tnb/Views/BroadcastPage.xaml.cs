@@ -12,6 +12,8 @@ namespace Tnb
 
 		BroadcastViewModel viewModel;
 
+		PopupWebviewPage webViewPage = null;
+
 
 		public BroadcastPage()
 		{
@@ -20,6 +22,38 @@ namespace Tnb
 			viewModel = new BroadcastViewModel();
 
 			listViewBroadcastGame.ItemsSource = viewModel.broadcastModelList;
+
+			listViewBroadcastGame.ItemSelected += OnSelectedItem;
+
+			labelDate.BindingContext = viewModel;
+
+			btnPrev.Clicked += OnPrevClicked;
+			btnNext.Clicked += OnNextClicked;
+		}
+
+
+		private void OnSelectedItem( object sender, EventArgs e )
+		{
+			if (webViewPage == null) webViewPage = new PopupWebviewPage();
+
+			//Application.Current.MainPage = webViewPage;
+
+			Navigation.PushModalAsync( webViewPage );
+
+			const string URL = "https://watch.nba.com";
+
+			webViewPage.OpenURL( URL );
+		}
+
+
+		private void OnPrevClicked( object sender, EventArgs e )
+		{
+			viewModel.changeDate( false );
+		}
+
+		private void OnNextClicked(object sender, EventArgs e)
+		{
+			viewModel.changeDate(true);
 		}
 
 
@@ -28,6 +62,8 @@ namespace Tnb
 			base.OnAppearing();
 
 			viewModel.OnViewAppearing();
+
+
 		}
 
 	}

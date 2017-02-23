@@ -7,6 +7,8 @@ namespace Tnb
 		public TnbPage()
 		{
 			InitializeComponent();
+
+			//SetValue(NavigationPage.BarTextColorProperty, Color.Blue);
 		}
 	}
 }
