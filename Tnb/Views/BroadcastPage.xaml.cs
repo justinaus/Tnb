@@ -2,7 +2,7 @@
 
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Tnb
@@ -12,7 +12,7 @@ namespace Tnb
 
 		BroadcastViewModel viewModel;
 
-		PopupWebviewPage webViewPage = null;
+		//PopupWebviewPage webViewPage = null;
 
 
 		public BroadcastPage()
@@ -29,55 +29,94 @@ namespace Tnb
 
 			btnPrev.Clicked += OnPrevClicked;
 			btnNext.Clicked += OnNextClicked;
+
+			var labelTab = new TapGestureRecognizer();
+			labelTab.Tapped += OnTodayClicked;
+			labelDate.GestureRecognizers.Add(labelTab);
 		}
 
 
-		private void OnSelectedItem( object sender, SelectedItemChangedEventArgs e )
+		protected override async void OnAppearing()
+		{
+			base.OnAppearing();
+
+			await viewModel.OnViewAppearingAsync(this);
+		}
+
+
+
+
+
+
+		private async void OnSelectedItem( object sender, SelectedItemChangedEventArgs e )
 		{
 			if (e.SelectedItem == null)
 			{
 				return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
 			}
 
+			IBroadcastModel model = listViewBroadcastGame.SelectedItem as IBroadcastModel;
+
 			listViewBroadcastGame.SelectedItem = null;
 
-			if (webViewPage == null) webViewPage = new PopupWebviewPage();
+			if (model.Title.IndexOf(":", StringComparison.Ordinal) == -1)
+			{
+				return;
+			}
 
-			const string URL = "https://watch.nba.com";
-			webViewPage.OpenURL(URL);
+			string goNaverUrl = await viewModel.GetLink( model );
+			Debug.WriteLine( goNaverUrl );
 
-			Debug.WriteLine("123");
+			//openWebView();
 
-			//Application.Current.MainPage = webViewPage;
-			Navigation.PushModalAsync( webViewPage );
-
-			Debug.WriteLine( "456" + listViewBroadcastGame );
-
-			Debug.WriteLine("789" + listViewBroadcastGame.SelectedItem);
-
-
+			//Device.OpenUri(new Uri("instagram://"));
+			//http://sports.news.naver.com/tv/index.nhn?category=etc&gameId=20170227KBOSC
+			//Device.OpenUri(new Uri("naverplayer://"));
+			Device.OpenUri(new Uri( goNaverUrl ));
 		}
 
-
-		private void OnPrevClicked( object sender, EventArgs e )
+		private async void OnTodayClicked(object sender, EventArgs e)
 		{
-			viewModel.changeDate( false );
+			//var aiView = new ActivityIndicatorView();
+
+			//slMain.Children.Add( aiView );
+
+			//aiView.OnLoading( true );
+
+
+
+			TnbPage.Instance.IsBusy = true;
+
+			await viewModel.changeToday();
 		}
 
-		private void OnNextClicked(object sender, EventArgs e)
+		private async void OnPrevClicked( object sender, EventArgs e )
 		{
-			viewModel.changeDate(true);
+			await viewModel.changeDate( false );
 		}
 
-
-		protected override void OnAppearing()
+		private async void OnNextClicked(object sender, EventArgs e)
 		{
-			base.OnAppearing();
-
-			viewModel.OnViewAppearing();
-
-
+			await viewModel.changeDate(true);
 		}
+
+
+
+
+
+
+
+		//private async Task openWebView( string url )
+		//{
+		//	if (webViewPage == null) webViewPage = new PopupWebviewPage();
+
+		//	//http://sports.news.naver.com/tv/index.nhn?category=etc&gameId=20170227KBOSC
+
+		//	//Device.OpenUri(new Uri( url ));
+
+		//	//Application.Current.MainPage = webViewPage;
+		//	return await Navigation.PushModalAsync( webViewPage );
+		//}
 
 	}
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage"
-		xmlns:local="clr-namespace:Tnb" Icon="Images/today.png" Title="중계">
+		xmlns:local="clr-namespace:Tnb" Icon="Images/today.png" Title="중계리스트">
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical">
+		<StackLayout Orientation="Vertical" x:Name="slMain">
 			
 			<StackLayout Orientation="Vertical" BackgroundColor="#B0C4DE">
 				<StackLayout.Padding>

@@ -8,6 +8,9 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using System.ComponentModel;
+using HtmlAgilityPack;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace Tnb
 {
@@ -19,6 +22,8 @@ namespace Tnb
 
 		public ObservableCollectionCustomized<BroadcastModelGroup> broadcastModelList = new ObservableCollectionCustomized<BroadcastModelGroup>();
 
+		private NaverDataManager naverDataManager;
+
 
 		public BroadcastViewModel()
 		{
@@ -26,7 +31,7 @@ namespace Tnb
 		}
 
 
-		public void OnViewAppearing()
+		public async Task OnViewAppearingAsync(VisualElement view)
 		{
 			//2017-02-12 오후 5:30:13
 			DateTime DateTimeNow = DateTime.Now;
@@ -38,7 +43,7 @@ namespace Tnb
 
 				DateTimeCurrent = DateTimeToday;
 
-				onChangedCurrentDate();
+				await onChangedCurrentDate();
 			}
 			else {
 				Debug.WriteLine( "same date!!!!!!" );
@@ -46,21 +51,47 @@ namespace Tnb
 		}
 
 
-
-
-		private async Task onChangedCurrentDate()
+		private async Task<DateTime> onChangedCurrentDate()
 		{
-			Debug.WriteLine( "onChangedCurrentDate" +  DateTimeCurrent.Day );
-
 			OnPropertyChanged("CurrentDate");
 
 			broadcastModelList.Clear();
 
-			await getSpotvDataAll( DateTimeCurrent );
+			//await getDataTest( "http://m.sports.naver.com/basketball/schedule/index.nhn?category=nba&date=20170224" );
+			await getSpotvDataAll(DateTimeCurrent);
+
+			return DateTimeCurrent;
 		}
 
 
-		public void changeDate( bool bNext )
+		public async Task<string> GetLink( IBroadcastModel model )
+		{
+			if (naverDataManager == null)
+			{
+				naverDataManager = new NaverDataManager();
+			}
+
+			return await naverDataManager.GetGameURL( DateTimeCurrent, model.Title );
+		}
+
+
+		private async Task<DateTime> changeDate(DateTime dt)
+		{
+			DateTimeCurrent = dt;
+
+			await onChangedCurrentDate();
+
+			return DateTimeCurrent;
+		}
+
+
+		public async Task<DateTime> changeToday()
+		{
+			return await changeDate( DateTimeToday );
+		}
+
+
+		public async Task<DateTime> changeDate( bool bNext )
 		{
 			Debug.WriteLine( "click change" );
 
@@ -72,7 +103,9 @@ namespace Tnb
 				DateTimeCurrent = DateTimeCurrent.AddDays( -1 );
 			}
 
-			onChangedCurrentDate();
+			await onChangedCurrentDate();
+
+			return DateTimeCurrent;
 		}
 
 
@@ -216,14 +249,6 @@ namespace Tnb
 			}
 		}
 
-
-
-
-
-		public void OnViewDisappearing()
-		{
-
-		}
 
 	}
 }

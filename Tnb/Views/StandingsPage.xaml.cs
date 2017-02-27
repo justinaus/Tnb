@@ -15,12 +15,12 @@ namespace Tnb
 		}
 
 
-		async void OnUpcomingAppointmentsButtonClicked(object sender, EventArgs e)
-		{
-			Debug.WriteLine("OnUpcomingAppointmentsButtonClicked");
+		//async void OnUpcomingAppointmentsButtonClicked(object sender, EventArgs e)
+		//{
+		//	Debug.WriteLine("OnUpcomingAppointmentsButtonClicked");
 
-			//await Navigation.PushAsync(new UpcomingAppointmentsPage());
-		}
+		//	//await Navigation.PushAsync(new UpcomingAppointmentsPage());
+		//}
 
 
 	}
