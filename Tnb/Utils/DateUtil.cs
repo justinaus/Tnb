@@ -11,11 +11,11 @@ namespace Tnb
 
 		/*
 		 * SortAscending
-6/19/1979 12:00:00 AM
-5/5/1980 12:00:00 AM
-10/20/1982 12:00:00 AM
-1/4/1984 12:00:00 AM
-*/
+		6/19/1979 12:00:00 AM
+		5/5/1980 12:00:00 AM
+		10/20/1982 12:00:00 AM
+		1/4/1984 12:00:00 AM
+		*/
 
 		/// <summary>
 		/// Sorts the ascending.
@@ -38,7 +38,7 @@ namespace Tnb
 			return list;
 		}
 
-		public static string getDayOfWeekForKorean( DayOfWeek dayOfWeekEng )
+		public static string GetDayOfWeekForKorean( DayOfWeek dayOfWeekEng )
 		{
 			string strRet = "";
 
@@ -70,6 +70,13 @@ namespace Tnb
 			}
 			return strRet;
 		}
+
+
+		public static bool GetIsSameDate(DateTime dateTimeTarget0, DateTime dateTimeTarget1)
+		{
+			return dateTimeTarget0.Date == dateTimeTarget1.Date && dateTimeTarget0.Month == dateTimeTarget1.Month;
+		}
+
 
 	}
 }

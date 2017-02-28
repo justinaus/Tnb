@@ -15,6 +15,7 @@ namespace Tnb
 
 		public BaseViewModel()
 		{
+			
 		}
 
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

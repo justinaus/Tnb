@@ -1,9 +1,14 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.SettingsPage"
 		Icon="Images/settings.png" Title="Settings">
 	<ContentPage.Content>
-		<StackLayout>
-			<Label Text="Settings go here" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+		<AbsoluteLayout>
+		<StackLayout Orientation="Horizontal">
+			<Button Text="ABC" BackgroundColor="Lime" 
+				HorizontalOptions="CenterAndExpand" VerticalOptions="Fill"
+					>
+			</Button>
 		</StackLayout>
+			</AbsoluteLayout>
 	</ContentPage.Content>
 </ContentPage>

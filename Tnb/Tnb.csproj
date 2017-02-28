@@ -30,22 +30,25 @@
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
     <EmbeddedResource Include="TnbPage.xaml" />
-    <EmbeddedResource Include="Views\BroadcastPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\GamePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\SettingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\StandingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\PopupWebviewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ActivityIndicatorView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pages\GamePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pages\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pages\StandingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pages\BroadcastPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BroadcastHeaderView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -60,24 +63,10 @@
     <Compile Include="Collection\ObservableCollectionCustomized.cs" />
     <Compile Include="Interfaces\IHandleViewAppearing.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\BroadcastModelGroup.cs" />
     <Compile Include="ViewModels\BroadcastViewModel.cs" />
     <Compile Include="Models\Broadcast\IBroadcastModel.cs" />
     <Compile Include="Models\Broadcast\SpotvModel.cs" />
     <Compile Include="Utils\DateUtil.cs" />
-    <Compile Include="DateManager.cs" />
-    <Compile Include="Views\BroadcastPage.xaml.cs">
-      <DependentUpon>BroadcastPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\GamePage.xaml.cs">
-      <DependentUpon>GamePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StandingsPage.xaml.cs">
-      <DependentUpon>StandingsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PopupWebviewPage.xaml.cs">
       <DependentUpon>PopupWebviewPage.xaml</DependentUpon>
     </Compile>
@@ -86,11 +75,32 @@
     <Compile Include="Structs\SpotvURLStruct.cs" />
     <Compile Include="Models\Naver\NaverGameModel.cs" />
     <Compile Include="Utils\StringUtil.cs" />
-    <Compile Include="ViewModels\NaverDataManager.cs" />
     <Compile Include="Models\Naver\NaverGameModelDailyList.cs" />
     <Compile Include="Views\ActivityIndicatorView.xaml.cs">
       <DependentUpon>ActivityIndicatorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\StandingsPage.xaml.cs">
+      <DependentUpon>StandingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\BroadcastPage.xaml.cs">
+      <DependentUpon>BroadcastPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BroadcastHeaderView.xaml.cs">
+      <DependentUpon>BroadcastHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\SampleEnumeration.cs" />
+    <Compile Include="TnbPageViewModel.cs" />
+    <Compile Include="Utils\EventUtil.cs" />
+    <Compile Include="Models\Broadcast\BroadcastModelGroup.cs" />
+    <Compile Include="NaverDataManager.cs" />
+    <Compile Include="Structs\SpotvBroadcastKindStruct.cs" />
+    <Compile Include="Models\Broadcast\SkySportsModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
@@ -124,6 +134,9 @@
   <ItemGroup>
     <Folder Include="Structs\" />
     <Folder Include="Models\Naver\" />
+    <Folder Include="Views\Pages\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

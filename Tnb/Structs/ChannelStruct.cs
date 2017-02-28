@@ -12,5 +12,7 @@ namespace Tnb
 		public const string SPOTV_TWO_SHOW = "spotv two";
 		public const string SPOTV_PLUS_SHOW = "spotv plus";
 
+		public const string SKY_SPORTS = "skysports";
+
 	}
 }

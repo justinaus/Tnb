@@ -1,20 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Tnb
 {
 	public partial class ActivityIndicatorView : ContentView
 	{
+		
+
 		public ActivityIndicatorView()
 		{
 			InitializeComponent();
+
+			IsRunning = false;
 		}
 
 
-		public void OnLoading( bool isRunning )
+		public bool IsRunning
 		{
-			actInd.IsRunning = isRunning;
+			get
+			{
+				return activityIndicator.IsRunning;
+			}
+
+			set
+			{
+				activityIndicator.IsRunning = value;
+				IsVisible = value;
+			}
 		}
+
 	}
 }

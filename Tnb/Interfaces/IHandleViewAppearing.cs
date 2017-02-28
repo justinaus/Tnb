@@ -6,6 +6,6 @@ namespace Tnb
 {
 	public interface IHandleViewAppearing
 	{
-		Task OnViewAppearingAsync(VisualElement view);
+		void OnViewAppearing(VisualElement view);
 	}
 }

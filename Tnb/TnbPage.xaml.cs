@@ -5,7 +5,7 @@ namespace Tnb
 	public partial class TnbPage : TabbedPage
 	{
 
-		private static TnbPage instance = null;
+		private TnbPageViewModel viewModel;
 
 
 		public TnbPage()
@@ -14,17 +14,7 @@ namespace Tnb
 
 			//SetValue(NavigationPage.BarTextColorProperty, Color.Blue);
 
-			instance = this;
-
-			//IsBusy = true;
-		}
-
-
-		public static TnbPage Instance { 
-			get
-			{
-				return instance;
-			}
+			viewModel = new TnbPageViewModel();
 		}
 
 

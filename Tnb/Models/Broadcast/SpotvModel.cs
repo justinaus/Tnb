@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+
 namespace Tnb
 {
 	public class SpotvModel : IBroadcastModel
@@ -36,6 +38,29 @@ namespace Tnb
 				if (hour.Length < 2) hour = "0" + hour;
 
 				return hour + ":" + ScheduleMinute;
+			}
+		}
+
+		public string ImagePath
+		{
+			get
+			{
+				string strRet = "Images/today.png";
+
+				switch ( Kind )
+				{
+					case SpotvBroadcastKindStruct.LIVE :
+						strRet = "Images/today.png";
+						break;
+					case SpotvBroadcastKindStruct.REGULAR:
+						strRet = "Images/schedule.png";
+						break;
+					case SpotvBroadcastKindStruct.RERUN:
+						strRet = "Images/settings.png";
+						break;
+				}
+
+				return strRet;
 			}
 		}
 

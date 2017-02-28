@@ -11,140 +11,180 @@ using System.ComponentModel;
 using HtmlAgilityPack;
 using System.Xml.Linq;
 using System.Xml;
+using System.Linq;
 
 namespace Tnb
 {
 	public class BroadcastViewModel : BaseViewModel, IHandleViewAppearing
 	{
 
-		private DateTime DateTimeCurrent;
-		private DateTime DateTimeToday;
+		private BroadcastPage _view;
+		private BroadcastHeaderView _broadcastHeaderView;
 
 		public ObservableCollectionCustomized<BroadcastModelGroup> broadcastModelList = new ObservableCollectionCustomized<BroadcastModelGroup>();
 
 		private NaverDataManager naverDataManager;
 
 
-		public BroadcastViewModel()
+		public BroadcastViewModel( BroadcastPage view, BroadcastHeaderView headerView )
 		{
-			
+			_view = view;
+			_broadcastHeaderView = headerView;
+
+			_broadcastHeaderView.DateChanged += onDateChanged;
 		}
 
 
-		public async Task OnViewAppearingAsync(VisualElement view)
+		public void OnViewAppearing(VisualElement view)
 		{
-			//2017-02-12 오후 5:30:13
-			DateTime DateTimeNow = DateTime.Now;
+			_broadcastHeaderView.SetToday();
+		}
 
-			if ( !getIsSameDate( DateTimeToday, DateTimeNow))
+
+
+
+
+
+		private async Task getSkySportsData( DateTime dateTime )
+		{
+			HttpClient client = new HttpClient();
+
+			HttpResponseMessage response = await client.GetAsync("https://tv.skylife.co.kr/skysports/timetable/by/channel");
+
+			HttpContent content = response.Content;
+
+			string result = await content.ReadAsStringAsync();
+			result = WebUtility.HtmlDecode(result);
+
+			BroadcastViewModel.MakeData(result, dateTime);
+		}
+
+
+		private static void MakeData(string strHTML, DateTime dateTime)
+		{
+			int startIdx = strHTML.IndexOf("<html", System.StringComparison.Ordinal);
+			if (startIdx > 0) strHTML = strHTML.Substring(startIdx);
+
+			HtmlDocument doc = new HtmlDocument();
+			doc.LoadHtml(strHTML);
+
+			SkySportsModel model;
+
+			int nDayCurrent = (int)dateTime.DayOfWeek;
+
+			Debug.WriteLine( "TTTTTT" + nDayCurrent );
+
+			//IEnumerable<HtmlNode> trNode = doc.DocumentNode.Descendants( "tr" ).Where(x => x.ParentNode.Name == "tbody");
+
+			foreach (HtmlNode element in doc.DocumentNode.Descendants("tr"))
 			{
-				// day changed!
-				DateTimeToday = DateTimeNow;
+				if (element.ParentNode.Name != "tbody") continue;
+				// 24 lines.
 
-				DateTimeCurrent = DateTimeToday;
+				int nSeq = 0;
 
-				await onChangedCurrentDate();
+				foreach (HtmlNode element2 in element.Descendants("td"))
+				{
+					if (element2.ParentNode != element) continue;
+
+					++nSeq;
+
+					if (nSeq == 1) continue;
+
+					int nDay = nSeq - 2;
+
+					if (nDay != nDayCurrent) continue;
+
+					if (element2.OuterHtml.IndexOf("NBA", StringComparison.Ordinal) == -1) continue;
+
+					foreach (HtmlNode element3 in element2.Descendants("p"))
+					{
+						if (element3.OuterHtml.IndexOf("NBA", StringComparison.Ordinal) == -1) continue;
+
+						model = new SkySportsModel();
+
+						model.Time = element2.Descendants("p").Where(x => x.GetAttributeValue("class", "") == "dateTxt mb10").First().InnerText;
+						model.Channel = ChannelStruct.SKY_SPORTS;
+						model.Kind = SpotvBroadcastKindStruct.RERUN;
+						model.Title = element2.Descendants("span").First().InnerText;
+
+						Debug.WriteLine( model.Time + "///" + model.Title);
+					}
+
+
+
+
+
+					//new HtmlAttribute().
+
+					//doc.DocumentNode.Descendants("tr").Where(x => x.ParentNode.Name == "tbody");
+
+
+					//Debug.WriteLine( element2.Descendants( "span" ).First().OuterHtml );
+
+					//model.Link = element2.Attributes( "class" );
+
+					//model.Values = StringUtil.Trim(element2.Value);
+
+					//dailyList.Add(model);
+				}
+
+
+
+					//Debug.WriteLine("%%" + nCount);
 			}
-			else {
-				Debug.WriteLine( "same date!!!!!!" );
-			}
+
 		}
 
 
-		private async Task<DateTime> onChangedCurrentDate()
+		private async void onDateChanged( object sender, DateChangedEventArgs e )
 		{
-			OnPropertyChanged("CurrentDate");
+			_broadcastHeaderView.IsEnabled = false;
+			_view.ShowActivityIndicator( true );
 
 			broadcastModelList.Clear();
 
 			//await getDataTest( "http://m.sports.naver.com/basketball/schedule/index.nhn?category=nba&date=20170224" );
-			await getSpotvDataAll(DateTimeCurrent);
+			await getSpotvDataAll( e.DateTimeTarget );
 
-			return DateTimeCurrent;
+			_view.ShowActivityIndicator(false);
+			_broadcastHeaderView.IsEnabled = true;
+
+			// testtest!!!
+			await getSkySportsData( e.DateTimeTarget );
 		}
 
 
-		public async Task<string> GetLink( IBroadcastModel model )
+		private async Task<ObservableCollectionCustomized<BroadcastModelGroup>> getSpotvDataAll(DateTime dateTime)
 		{
-			if (naverDataManager == null)
-			{
-				naverDataManager = new NaverDataManager();
-			}
-
-			return await naverDataManager.GetGameURL( DateTimeCurrent, model.Title );
-		}
-
-
-		private async Task<DateTime> changeDate(DateTime dt)
-		{
-			DateTimeCurrent = dt;
-
-			await onChangedCurrentDate();
-
-			return DateTimeCurrent;
-		}
-
-
-		public async Task<DateTime> changeToday()
-		{
-			return await changeDate( DateTimeToday );
-		}
-
-
-		public async Task<DateTime> changeDate( bool bNext )
-		{
-			Debug.WriteLine( "click change" );
-
-			if (bNext)
-			{
-				DateTimeCurrent = DateTimeCurrent.AddDays( 1 );
-			}
-			else {
-				DateTimeCurrent = DateTimeCurrent.AddDays( -1 );
-			}
-
-			await onChangedCurrentDate();
-
-			return DateTimeCurrent;
-		}
-
-
-
-		private async Task<ObservableCollectionCustomized<BroadcastModelGroup>> getSpotvDataAll(DateTime dateTime) 
-		{
-			//broadcastModelList.Clear();
-
-			BroadcastModelGroup group = await getSpotvDataByChannel( dateTime, ChannelStruct.SPOTV_ONE );
-			if ( group.Count > 0 )	broadcastModelList.Add(group);
-
-			group = await getSpotvDataByChannel(dateTime, ChannelStruct.SPOTV_TWO );
+			BroadcastModelGroup group = await getSpotvDataByChannel(dateTime, ChannelStruct.SPOTV_ONE);
 			if (group.Count > 0) broadcastModelList.Add(group);
 
-			group = await getSpotvDataByChannel(dateTime, ChannelStruct.SPOTV_PLUS );
+			group = await getSpotvDataByChannel(dateTime, ChannelStruct.SPOTV_TWO);
+			if (group.Count > 0) broadcastModelList.Add(group);
+
+			group = await getSpotvDataByChannel(dateTime, ChannelStruct.SPOTV_PLUS);
 			if (group.Count > 0) broadcastModelList.Add(group);
 
 			return broadcastModelList;
 		}
 
 
-		private async Task<BroadcastModelGroup> getSpotvDataByChannel( DateTime dateTime, string strChannel )
+		private async Task<BroadcastModelGroup> getSpotvDataByChannel(DateTime dateTime, string strChannel)
 		{
 			BroadcastModelGroup group = new BroadcastModelGroup();
 			group.Channel = strChannel;
 			group.ChannelShow = getChannelShow(strChannel);
 
-			ObservableCollectionCustomized<IBroadcastModel> gotModelList = await getSpotvData( DateTimeCurrent, SpotvURLStruct.DAY_PART_MORNING, strChannel );
-			group.AddRange( gotModelList );
-			gotModelList = await getSpotvData(DateTimeCurrent, SpotvURLStruct.DAY_PART_EVENING, strChannel);
+			ObservableCollectionCustomized<IBroadcastModel> gotModelList = await getSpotvData(dateTime, SpotvURLStruct.DAY_PART_MORNING, strChannel);
 			group.AddRange(gotModelList);
-			gotModelList = await getSpotvData(DateTimeCurrent, SpotvURLStruct.DAY_PART_NIGHT, strChannel);
+			gotModelList = await getSpotvData(dateTime, SpotvURLStruct.DAY_PART_EVENING, strChannel);
 			group.AddRange(gotModelList);
-
-			//group.Add(new SpotvModel( "hello world", "holly", "wood" ) );
+			gotModelList = await getSpotvData(dateTime, SpotvURLStruct.DAY_PART_NIGHT, strChannel);
+			group.AddRange(gotModelList);
 
 			return group;
 		}
-
 
 
 		private async Task<ObservableCollectionCustomized<IBroadcastModel>> getSpotvData(DateTime dateTime, string strDayPart, string strChannel)
@@ -158,19 +198,17 @@ namespace Tnb
 			HttpContent content = response.Content;
 
 			string result = await content.ReadAsStringAsync();
-			result = WebUtility.HtmlDecode( result );
+			result = WebUtility.HtmlDecode(result);
 
 			JArray jarrResult = JArray.Parse(result);
 
 			ObservableCollectionCustomized<IBroadcastModel> listSpotv = getNBAPrettyData(jarrResult, strChannel);
 
-			//broadcastModelList.AddRange( listSpotv );
-
 			return listSpotv;
 		}
 
 
-		private ObservableCollectionCustomized<IBroadcastModel> getNBAPrettyData( JArray jarrRaw, string strChannel )
+		private ObservableCollectionCustomized<IBroadcastModel> getNBAPrettyData(JArray jarrRaw, string strChannel)
 		{
 			ObservableCollectionCustomized<IBroadcastModel> listRet = new ObservableCollectionCustomized<IBroadcastModel>();
 
@@ -187,7 +225,7 @@ namespace Tnb
 
 			for (int i = 0; i < jarrRaw.Count; ++i)
 			{
-				jobjRaw = jarrRaw[ i ] as JObject;
+				jobjRaw = jarrRaw[i] as JObject;
 
 				title = (string)(jobjRaw["title"]);
 
@@ -195,7 +233,7 @@ namespace Tnb
 
 				model = new SpotvModel();
 
-				model.Kind = (string)( jobjRaw["kind"] );
+				model.Kind = (string)(jobjRaw["kind"]);
 				model.ScheduleDate = (string)(jobjRaw["sch_date"]);
 				model.ScheduleHour = (string)(jobjRaw["sch_hour"]);
 				model.ScheduleMinute = (string)(jobjRaw["sch_min"]);
@@ -204,10 +242,21 @@ namespace Tnb
 
 				model.Channel = strChannel;
 
-				listRet.Add( model );
+				listRet.Add(model);
 			}
 
 			return listRet;
+		}
+
+
+		public async Task<string> GetLink( IBroadcastModel model )
+		{
+			if (naverDataManager == null)
+			{
+				naverDataManager = new NaverDataManager();
+			}
+
+			return await naverDataManager.GetGameURL( _broadcastHeaderView.DateTimeCurrent, model.Title );
 		}
 
 
@@ -229,24 +278,6 @@ namespace Tnb
 			}
 
 			return strRet;
-		}
-
-
-
-		private bool getIsSameDate(DateTime dateTimeTarget0, DateTime dateTimeTarget1)
-		{
-			return dateTimeTarget0.Date == dateTimeTarget1.Date && dateTimeTarget0.Month == dateTimeTarget1.Month;
-		}
-
-
-
-
-		public string CurrentDate
-		{
-			get
-			{
-				return DateTimeCurrent.Month + " / " + DateTimeCurrent.Day + " (" + DateUtil.getDayOfWeekForKorean(DateTimeCurrent.DayOfWeek) + ")";
-			}
 		}
 
 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage"
+		xmlns:local="clr-namespace:Tnb" Icon="Images/today.png" Title="중계리스트">
+	<ContentPage.Content>
+		<RelativeLayout>
+			<StackLayout Orientation="Vertical" x:Name="slMain"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=1}">
+				
+				<local:BroadcastHeaderView x:Name="broadcastHeader" />
+
+				<ListView  x:Name="listViewBroadcastGame"
+						ItemsSource="{Binding broadcastModelList}"
+						GroupDisplayBinding="{Binding Channel}"
+	        			IsGroupingEnabled="true"
+						HasUnevenRows="true"
+						SeparatorColor="#CCCCCC">
+	            <ListView.ItemTemplate>
+	                <DataTemplate>
+	                    <ViewCell>
+	                        <StackLayout Orientation="Vertical" Padding="20, 20, 20, 20">
+									<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand"
+										Padding="5,0,0,0">
+										<Image Source="{Binding ImagePath}" VerticalOptions="Center"/>
+		                        		<Label Text="{Binding Time}" TextColor="Gray" FontSize="Small"
+											VerticalOptions="Center">
+											<Label.FontFamily>
+										        <OnPlatform x:TypeArguments="x:String">
+										            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
+										            <OnPlatform.Android></OnPlatform.Android>
+										            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+										        </OnPlatform>
+										    </Label.FontFamily>
+										</Label>
+									</StackLayout>
+
+									<Label Text="{Binding Title}"
+	                                TextColor="{x:Static local:ColorStruct.GrayAlmostBlack}"
+										FontSize="Medium"
+											x:Name="labelTitle">
+										<Label.FontFamily>
+									        <OnPlatform x:TypeArguments="x:String">
+									            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
+									            <OnPlatform.Android></OnPlatform.Android>
+									            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+									        </OnPlatform>
+									    </Label.FontFamily>
+									</Label>
+
+	                                
+	                        </StackLayout>
+	                    </ViewCell>
+	                </DataTemplate>
+	            </ListView.ItemTemplate>
+
+				<ListView.GroupHeaderTemplate>
+	                <DataTemplate>
+	                    <ViewCell Height="30" >
+	                        <StackLayout Orientation="Horizontal" 
+										VerticalOptions="Center"
+										Padding="15,0,15,0">
+									<Label Text="{Binding ChannelShow}"
+	                                TextColor="{x:Static local:ColorStruct.GrayAlmostBlack}"
+										FontSize="Small">
+										<Label.FontFamily>
+									        <OnPlatform x:TypeArguments="x:String">
+									            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
+									            <OnPlatform.Android></OnPlatform.Android>
+									            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+									        </OnPlatform>
+									    </Label.FontFamily>
+									</Label>
+								</StackLayout>
+							</ViewCell>>
+	                </DataTemplate>
+	            </ListView.GroupHeaderTemplate>
+	        </ListView>
+			</StackLayout>
+
+			<local:ActivityIndicatorView x:Name="aiv"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=1}"/>
+		</RelativeLayout>
+	</ContentPage.Content>
+</ContentPage>

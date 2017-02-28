@@ -94,14 +94,14 @@ namespace Tnb
 		{
 			HttpClient client = new HttpClient();
 
-			Debug.WriteLine( "@@@@@" + dateTime.Date );
-
-			HttpResponseMessage response = await client.GetAsync( URL_SCHEDULE + dateTime.Date );
+			HttpResponseMessage response = await client.GetAsync( URL_SCHEDULE + dateTime.Date.ToString("yyyyMMdd") );
 
 			HttpContent content = response.Content;
 
 			string strHTML = await content.ReadAsStringAsync();
 			strHTML = WebUtility.HtmlDecode(strHTML);
+
+			//Debug.WriteLine("response : " + strHTML);
 
 			return MakeNaverData(strHTML);
 		}
