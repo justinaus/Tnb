@@ -30,6 +30,8 @@ namespace Tnb
 
 		public string Channel { get; set; }
 
+		public string DayPart { get; set; }
+
 		public string Time
 		{
 			get
@@ -49,13 +51,16 @@ namespace Tnb
 
 				switch ( Kind )
 				{
-					case SpotvBroadcastKindStruct.LIVE :
+					case BroadcastStruct.LIVE :
 						strRet = "Images/today.png";
 						break;
-					case SpotvBroadcastKindStruct.REGULAR:
+					case BroadcastStruct.REGULAR:
 						strRet = "Images/schedule.png";
 						break;
-					case SpotvBroadcastKindStruct.RERUN:
+					case BroadcastStruct.RERUN:
+						strRet = "Images/settings.png";
+						break;
+					case BroadcastStruct.DELAYED:
 						strRet = "Images/settings.png";
 						break;
 				}

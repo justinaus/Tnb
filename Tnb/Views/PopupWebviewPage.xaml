@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.PopupWebviewPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.PopupWebviewPage"
+	 IsBusy="{Binding IsBusy}">
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical" BackgroundColor="Black" HorizontalOptions="Fill">
+		<StackLayout Orientation="Vertical" BackgroundColor="Black" HorizontalOptions="FillAndExpand">
 			<StackLayout.Padding>
 				<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 			</StackLayout.Padding>
+
 			<ContentView x:Name="cv" VerticalOptions="FillAndExpand"
-				 Margin="0,0,0,-6" />
+				Margin="0,0,0,-6">
+			</ContentView>
+
 			<StackLayout Orientation="Horizontal"
 					HorizontalOptions="FillAndExpand" VerticalOptions="End"
 					BackgroundColor="Silver" Padding="10,0,10,0">
-				<Button Text="x" HorizontalOptions="FillAndExpand" Clicked="closeClicked" />
-                <Button Text="b" Clicked="backClicked" HorizontalOptions="FillAndExpand" />
-                <Button Text="f" Clicked="forwardClicked" HorizontalOptions="FillAndExpand" />
-				<Button Text="s" HorizontalOptions="FillAndExpand" Clicked="openSafariClicked" />
+				<Button x:Name="btnClose" Image="Images/today.png" HorizontalOptions="FillAndExpand" />
+                <Button x:Name="btnBack" Image="Images/today.png" HorizontalOptions="FillAndExpand" />
+                <Button x:Name="btnForward" Image="Images/today.png" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="btnRefresh" Image="Images/today.png" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="btnWebBrowser" Image="Images/today.png" HorizontalOptions="FillAndExpand" />
             </StackLayout>
 
         </StackLayout>

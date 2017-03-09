@@ -14,7 +14,7 @@ namespace Tnb
 		{
 			InitializeComponent();
 
-			viewModel = new BroadcastViewModel( this, broadcastHeader );
+			viewModel = new BroadcastViewModel( this );
 
 			listViewBroadcastGame.ItemsSource = viewModel.broadcastModelList;
 			listViewBroadcastGame.ItemSelected += OnSelectedItem;
@@ -39,8 +39,8 @@ namespace Tnb
 			IBroadcastModel model = listViewBroadcastGame.SelectedItem as IBroadcastModel;
 
 			listViewBroadcastGame.SelectedItem = null;
-
-			if (model.Title.IndexOf(":", StringComparison.Ordinal) == -1)
+			if( model.Kind != BroadcastStruct.LIVE )
+			//if (model.Title.IndexOf(":", StringComparison.Ordinal) == -1)
 			{
 				return;
 			}
@@ -48,13 +48,39 @@ namespace Tnb
 			string goNaverUrl = await viewModel.GetLink( model );
 			Debug.WriteLine( goNaverUrl );
 
-			Device.OpenUri(new Uri( goNaverUrl ));
+			PopupWebviewPage webViewPage = new PopupWebviewPage();
+			webViewPage.OpenURL( goNaverUrl );
+
+			//Application.Current.MainPage = webViewPage;
+
+			await Navigation.PushModalAsync( webViewPage );
+
+			//Device.OpenUri(new Uri( goNaverUrl ));
+			//Device.OpenUri(new Uri( "naverplayer://" ));
 		}
 
 
 		public void ShowActivityIndicator( bool bShow )
 		{
 			aiv.IsRunning = bShow;
+		}
+
+
+		public BroadcastHeaderView BroadcastHeaderView
+		{
+			get
+			{
+				return broadcastHeader;
+			}
+		}
+
+
+		public NetworkWarningView NetWarningView
+		{
+			get
+			{
+				return netWarningView;
+			}
 		}
 
 	}

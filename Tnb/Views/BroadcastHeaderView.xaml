@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastHeaderView">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastHeaderView"
+	xmlns:local="clr-namespace:Tnb">
 	<ContentView.Content>
-		<StackLayout Orientation="Vertical" BackgroundColor="#B0C4DE">
+		<StackLayout Orientation="Vertical" BackgroundColor="{x:Static local:ColorStruct.XamarinDarkBlue}"
+			VerticalOptions="Start">
 			<StackLayout.Padding>
 				<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 			</StackLayout.Padding>
 
-			<StackLayout Orientation="Horizontal" HeightRequest="60" HorizontalOptions="CenterAndExpand">
+			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
+				VerticalOptions="CenterAndExpand" Margin="2">
 				<Button x:Name="btnPrev" Image="Images/today.png" />
 				<Label x:Name="labelDate" Text="{Binding CurrentDate}" VerticalOptions="Center" Margin="30,0,30,0"
-						FontSize="Medium" TextColor="#EEEEEE">
+						FontSize="Medium" TextColor="{x:Static local:ColorStruct.XamarinLightGray}">
 					<Label.FontFamily>
 				        <OnPlatform x:TypeArguments="x:String">
 				            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
@@ -18,7 +21,7 @@
 				        </OnPlatform>
 				    </Label.FontFamily>
 				</Label>
-				<Button x:Name="btnNext" Image="Images/today.png" HeightRequest="20" />
+				<Button x:Name="btnNext" Image="Images/today.png" />
 			</StackLayout>
 		</StackLayout>
 	</ContentView.Content>

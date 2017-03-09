@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace Tnb
@@ -8,47 +8,63 @@ namespace Tnb
 	public partial class PopupWebviewPage : ContentPage
 	{
 
-		private WebView webview;
+		private WebViewControl _webViewControl;
+		private WebView _webView;
+
+		private const string NAVERPLAYER_SCHEME = "naverplayer";
+
+		private bool IsFirst = true;
 
 
 		public PopupWebviewPage()
 		{
 			InitializeComponent();
 
-			webview = new WebView();
+			_webViewControl = new WebViewControl(this);
+			_webView = _webViewControl.GetWebView();
 
-			cv.Content = webview;
+			_webViewControl.CustomWebViewEvent += OnCustomWebViewHandler;
+
+			cv.Content = _webView;
+
+			this.BindingContext = WebViewCtl;
 		}
 
 
-
-
-		public void OpenURL( string strURL )
+		public WebViewControl WebViewCtl
 		{
-			webview.Source = strURL;
-		}
-
-		public void closeClicked( object sender, EventArgs e )
-		{
-			Navigation.PopModalAsync();
-		}
-		public void backClicked(object sender, EventArgs e)
-		{
-			if (webview.CanGoBack)
+			get
 			{
-				webview.GoBack();
+				return _webViewControl;
 			}
 		}
-		public void forwardClicked(object sender, EventArgs e)
+
+
+		private void OnCustomWebViewHandler(object sender, CustomWebViewEventArgs e)
 		{
-			if (webview.CanGoForward)
+			Debug.WriteLine( "event listened" + e.TargetUrl );
+
+			switch ( e.WebViewEventType )
 			{
-				webview.GoForward();
+				case CustomWebViewEventArgs.Types.Closed :
+					Navigation.PopModalAsync();
+
+					break;
+				case CustomWebViewEventArgs.Types.NavigatedFailed :
+					if (e.TargetUrl.IndexOf(NAVERPLAYER_SCHEME, StringComparison.Ordinal) == 0)
+					{
+						Device.OpenUri(new Uri(e.TargetUrl));
+					}
+
+					break;
 			}
 		}
-		public void openSafariClicked(object sender, EventArgs e)
-		{
 
+
+		public void OpenURL(string strURL)
+		{
+			_webView.Source = strURL;
 		}
+
 	}
 }

@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.SettingsPage"
-		Icon="Images/settings.png" Title="Settings">
+		Icon="Images/settings.png" xmlns:local="clr-namespace:Tnb">
 	<ContentPage.Content>
-		<AbsoluteLayout>
-		<StackLayout Orientation="Horizontal">
-			<Button Text="ABC" BackgroundColor="Lime" 
-				HorizontalOptions="CenterAndExpand" VerticalOptions="Fill"
-					>
-			</Button>
+		<StackLayout Orientation="Vertical">
+			<StackLayout Orientation="Vertical"
+				BackgroundColor="{x:Static local:ColorStruct.XamarinDarkBlue}">
+				<StackLayout.Padding>
+					<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+				</StackLayout.Padding>
+				<Button Image="Images/today.png" Margin="2" 
+				HorizontalOptions="CenterAndExpand" />
+			</StackLayout>
+
+			<ListView  x:Name="listViewSetting"
+						GroupDisplayBinding="{Binding Title}"
+	        			IsGroupingEnabled="true"
+						HasUnevenRows="true"
+						SeparatorColor="{x:Static local:ColorStruct.XamarinGray}">
+	            <ListView.ItemTemplate>
+	                <DataTemplate>
+	                    <ViewCell>
+	                       <StackLayout Orientation="Horizontal" 
+								VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
+										 Padding="20, 20, 20, 20">
+										<Label Text="{Binding Title}" TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}" FontSize="Medium" Margin="0,0,-3,0"
+											VerticalOptions="Center">
+											<Label.FontFamily>
+										        <OnPlatform x:TypeArguments="x:String">
+										            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
+										            <OnPlatform.Android></OnPlatform.Android>
+										            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+										        </OnPlatform>
+										    </Label.FontFamily>
+										</Label>
+		                        		<Label Text="{Binding SubTitle}" TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}" FontSize="Medium"
+											VerticalOptions="CenterAndExpand"
+									HorizontalOptions="EndAndExpand">
+											<Label.FontFamily>
+										        <OnPlatform x:TypeArguments="x:String">
+										            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
+										            <OnPlatform.Android></OnPlatform.Android>
+										            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+										        </OnPlatform>
+										    </Label.FontFamily>
+										</Label>
+	                        </StackLayout>
+	                    </ViewCell>
+	                </DataTemplate>
+	            </ListView.ItemTemplate>
+
+				<ListView.GroupHeaderTemplate>
+	                <DataTemplate>
+	                    <ViewCell Height="30" >
+	                        <StackLayout Orientation="Horizontal" 
+										VerticalOptions="Center"
+										Padding="15,0,15,0">
+									<Label Text="{Binding Title}"
+	                                TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}"
+										FontSize="Small">
+										<Label.FontFamily>
+									        <OnPlatform x:TypeArguments="x:String">
+									            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
+									            <OnPlatform.Android></OnPlatform.Android>
+									            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+									        </OnPlatform>
+									    </Label.FontFamily>
+									</Label>
+								</StackLayout>
+							</ViewCell>>
+	                </DataTemplate>
+	            </ListView.GroupHeaderTemplate>
+	        </ListView>
 		</StackLayout>
-			</AbsoluteLayout>
 	</ContentPage.Content>
 </ContentPage>

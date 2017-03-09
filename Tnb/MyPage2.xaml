@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.MyPage2"
+	xmlns:local="clr-namespace:Tnb">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" x:Name="slMain" VerticalOptions="FillAndExpand"
+			Spacing="0">
+				
+				<Label Text="123" HeightRequest="40" BackgroundColor="{x:Static local:ColorStruct.XamarinDarkBlue}"
+				/>
+				
+				<StackLayout BackgroundColor="Green" Spacing="0">
+					<Label Text="aaa" BackgroundColor="Fuchsia"/>
+					<ListView Margin="0" HasUnevenRows="true" />
+				</StackLayout>
+			</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

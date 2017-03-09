@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage"
-		xmlns:local="clr-namespace:Tnb" Icon="Images/today.png" Title="중계리스트">
+		xmlns:local="clr-namespace:Tnb" Icon="Images/today.png">
 	<ContentPage.Content>
 		<RelativeLayout>
 			<StackLayout Orientation="Vertical" x:Name="slMain"
@@ -11,14 +11,15 @@
                                         Property=Height,
                                         Factor=1}">
 				
-				<local:BroadcastHeaderView x:Name="broadcastHeader" />
+				<local:BroadcastHeaderView x:Name="broadcastHeader" VerticalOptions="Start" />
 
 				<ListView  x:Name="listViewBroadcastGame"
 						ItemsSource="{Binding broadcastModelList}"
 						GroupDisplayBinding="{Binding Channel}"
 	        			IsGroupingEnabled="true"
 						HasUnevenRows="true"
-						SeparatorColor="#CCCCCC">
+						SeparatorColor="{x:Static local:ColorStruct.XamarinGray}"
+					VerticalOptions="FillAndExpand">
 	            <ListView.ItemTemplate>
 	                <DataTemplate>
 	                    <ViewCell>
@@ -26,8 +27,18 @@
 									<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand"
 										Padding="5,0,0,0">
 										<Image Source="{Binding ImagePath}" VerticalOptions="Center"/>
-		                        		<Label Text="{Binding Time}" TextColor="Gray" FontSize="Small"
+										<Label Text="{Binding DayPart}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" FontSize="Small" Margin="0,0,-3,0"
 											VerticalOptions="Center">
+											<Label.FontFamily>
+										        <OnPlatform x:TypeArguments="x:String">
+										            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
+										            <OnPlatform.Android></OnPlatform.Android>
+										            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+										        </OnPlatform>
+										    </Label.FontFamily>
+										</Label>
+		                        		<Label Text="{Binding Time}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" FontSize="Small"
+											VerticalOptions="CenterAndExpand">
 											<Label.FontFamily>
 										        <OnPlatform x:TypeArguments="x:String">
 										            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
@@ -39,7 +50,7 @@
 									</StackLayout>
 
 									<Label Text="{Binding Title}"
-	                                TextColor="{x:Static local:ColorStruct.GrayAlmostBlack}"
+	                                TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}"
 										FontSize="Medium"
 											x:Name="labelTitle">
 										<Label.FontFamily>
@@ -64,7 +75,7 @@
 										VerticalOptions="Center"
 										Padding="15,0,15,0">
 									<Label Text="{Binding ChannelShow}"
-	                                TextColor="{x:Static local:ColorStruct.GrayAlmostBlack}"
+	                                TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}"
 										FontSize="Small">
 										<Label.FontFamily>
 									        <OnPlatform x:TypeArguments="x:String">
@@ -88,6 +99,14 @@
 				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
                                         Factor=1}"/>
+			<local:NetworkWarningView x:Name="netWarningView" IsVisible="{Binding HasNetworkProblem}"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=1}"
+			IsEnabled="false" />
 		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

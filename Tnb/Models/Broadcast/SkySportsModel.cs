@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Tnb
 {
-	public class SkySportsModel
+	public class SkySportsModel : IBroadcastModel
 	{
 		public SkySportsModel()
 		{
@@ -14,6 +14,8 @@ namespace Tnb
 		public string Kind { get; set; }
 
 		public string Channel { get; set; }
+
+		public string DayPart { get; set; }
 
 		public string ImagePath
 		{
