@@ -47,21 +47,21 @@ namespace Tnb
 		{
 			get
 			{
-				string strRet = "Images/today.png";
+				string strRet = "Images/Broadcast/rebroad.png";
 
 				switch ( Kind )
 				{
 					case BroadcastStruct.LIVE :
-						strRet = "Images/today.png";
+						strRet = "Images/Broadcast/live.png";
 						break;
 					case BroadcastStruct.REGULAR:
-						strRet = "Images/schedule.png";
+						strRet = "Images/Broadcast/bonbroad.png";
 						break;
 					case BroadcastStruct.RERUN:
-						strRet = "Images/settings.png";
+						strRet = "Images/Broadcast/rebroad.png";
 						break;
 					case BroadcastStruct.DELAYED:
-						strRet = "Images/settings.png";
+						strRet = "Images/Broadcast/recordbroad.png";
 						break;
 				}
 

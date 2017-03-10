@@ -2,16 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.MyPage2"
 	xmlns:local="clr-namespace:Tnb">
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical" x:Name="slMain" VerticalOptions="FillAndExpand"
-			Spacing="0">
-				
-				<Label Text="123" HeightRequest="40" BackgroundColor="{x:Static local:ColorStruct.XamarinDarkBlue}"
-				/>
-				
-				<StackLayout BackgroundColor="Green" Spacing="0">
-					<Label Text="aaa" BackgroundColor="Fuchsia"/>
-					<ListView Margin="0" HasUnevenRows="true" />
-				</StackLayout>
-			</StackLayout>
+		<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand"
+			BackgroundColor="Fuchsia" Spacing="0"
+			Margin="0">
+			<Image Source="Images/Broadcast/rebroad.png" HeightRequest="14"
+			BackgroundColor="Olive" Margin="0" HorizontalOptions="Start" />
+			<Label Text="오전" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" FontSize="Medium"
+				BackgroundColor="Green" HorizontalOptions="Start">
+			</Label>
+    		<Label Text="16:30" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" FontSize="Medium"
+				BackgroundColor="Aqua" HorizontalOptions="StartAndExpand">
+			</Label>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

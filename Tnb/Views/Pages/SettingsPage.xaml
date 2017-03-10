@@ -8,8 +8,8 @@
 				<StackLayout.Padding>
 					<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 				</StackLayout.Padding>
-				<Button Image="Images/today.png" Margin="2" 
-				HorizontalOptions="CenterAndExpand" />
+				<Button Image="Images/Logo/tnblogolightgray.png"
+				HeightRequest="50" Margin="10" />
 			</StackLayout>
 
 			<ListView  x:Name="listViewSetting"
@@ -33,6 +33,10 @@
 										        </OnPlatform>
 										    </Label.FontFamily>
 										</Label>
+
+										<Image Source="Images/Justriz/justrizXamarinGrayAlmostBlack.png"
+								HeightRequest="25" IsVisible="{Binding HasImage}"/>
+								
 		                        		<Label Text="{Binding SubTitle}" TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}" FontSize="Medium"
 											VerticalOptions="CenterAndExpand"
 									HorizontalOptions="EndAndExpand">

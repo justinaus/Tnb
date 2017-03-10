@@ -114,10 +114,20 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon57.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon114.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon180.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
+    <Folder Include="Resources\Images\Justriz\" />
+    <Folder Include="Resources\Images\Logo\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -147,9 +157,15 @@
     <BundleResource Include="Resources\Fonts\NanumGothicLight.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Icon-Small%403x.png" />
+    <BundleResource Include="Resources\Images\Justriz\justrizXamarinGrayAlmostBlack.png" />
+    <BundleResource Include="Resources\Images\Logo\tnblogolightgray.png" />
+    <BundleResource Include="Resources\Images\Justriz\justrizXamarinLightGray.png" />
+    <BundleResource Include="Resources\Images\right.png" />
+    <BundleResource Include="Resources\Images\left.png" />
+    <BundleResource Include="Resources\Images\Broadcast\live.png" />
+    <BundleResource Include="Resources\Images\Broadcast\rebroad.png" />
+    <BundleResource Include="Resources\Images\Broadcast\bonbroad.png" />
+    <BundleResource Include="Resources\Images\Broadcast\recordbroad.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -10,10 +10,10 @@ namespace Tnb
 		
 		public List<PageTypeGroup> Groups = new List<PageTypeGroup> {
 			new PageTypeGroup ("서비스 정보", "A"){
-				new PageModel("버전", "0.0.1")
+				new PageModel("버전", "v1.0")
 			},
 			new PageTypeGroup ("개발자 정보", "B"){
-				new PageModel( "justriz81@gmail.com", "문의하기")
+				new PageModel( "", "문의하기", true)
 			}
 		};
 
@@ -39,9 +39,9 @@ namespace Tnb
 
 			listViewSetting.SelectedItem = null;
 
-			switch ( model.Title )
+			switch ( model.SubTitle )
 			{
-				case "justriz81@gmail.com" :
+				case "문의하기" :
 					sendMail( model.Title );
 
 					break;
@@ -80,11 +80,13 @@ namespace Tnb
 	{
 		public string Title { get; set; }
 		public string SubTitle { get; set; }
+		public bool HasImage { get; set; }
 
-		public PageModel(string title, string subTitle = "" )
+		public PageModel(string title, string subTitle = "", bool hasImage = false )
 		{
 			Title = title;
 			SubTitle = subTitle;
+			HasImage = hasImage;
 		}
 
 	}

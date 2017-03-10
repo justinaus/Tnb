@@ -25,10 +25,10 @@
 	                    <ViewCell>
 	                        <StackLayout Orientation="Vertical" Padding="20, 20, 20, 20">
 									<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand"
-										Padding="5,0,0,0">
-										<Image Source="{Binding ImagePath}" VerticalOptions="Center"/>
-										<Label Text="{Binding DayPart}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" FontSize="Small" Margin="0,0,-3,0"
-											VerticalOptions="Center">
+										Padding="5,0,0,0" Spacing="2" >
+										<Image Source="{Binding ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="14" Margin="0,0,3,0"/>
+										<Label Text="{Binding DayPart}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" 
+											FontSize="Small">
 											<Label.FontFamily>
 										        <OnPlatform x:TypeArguments="x:String">
 										            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
@@ -37,8 +37,7 @@
 										        </OnPlatform>
 										    </Label.FontFamily>
 										</Label>
-		                        		<Label Text="{Binding Time}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" FontSize="Small"
-											VerticalOptions="CenterAndExpand">
+		                        		<Label Text="{Binding Time}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" FontSize="Small">
 											<Label.FontFamily>
 										        <OnPlatform x:TypeArguments="x:String">
 										            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
@@ -98,7 +97,8 @@
                                         Factor=1}"
 				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
-                                        Factor=1}"/>
+                                        Factor=1}"
+			IsEnabled="false"/>
 			<local:NetworkWarningView x:Name="netWarningView" IsVisible="{Binding HasNetworkProblem}"
 				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,

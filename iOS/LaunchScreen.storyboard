@@ -18,8 +18,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedRGB" red="0.14509803921568629" green="0.26666666666666666" blue="0.44313725490196076" alpha="1"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="20" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="Images/schedule.png">
-                                <rect key="frame" x="250" y="250" width="99" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="20" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="Images/Logo/tnblogolightgray.png">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="26" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="Images/Justriz/justrizXamarinLightGray.png">
+                                <rect key="frame" x="255" y="507" width="90" height="48"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
                             </imageView>
                         </subviews>
@@ -35,5 +39,14 @@
         <image name="Images/schedule.png" width="24" height="24"/>
         <image name="Images/settings.png" width="24" height="24"/>
         <image name="Images/today.png" width="24" height="24"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="icon180.png" width="180" height="180"/>
+        <image name="Images/Justriz/justrizXamarinGrayAlmostBlack.png" width="177" height="62"/>
+        <image name="Images/Logo/tnblogolightgray.png" width="147" height="114"/>
+        <image name="Images/Justriz/justrizXamarinLightGray.png" width="177" height="62"/>
+        <image name="Images/right.png" width="22" height="51"/>
+        <image name="Images/left.png" width="22" height="51"/>
     </resources>
 </document>

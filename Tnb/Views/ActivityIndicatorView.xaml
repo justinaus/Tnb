@@ -4,7 +4,8 @@
 		<StackLayout x:Name="layoutActivityIndicator">
 				<ActivityIndicator x:Name="activityIndicator"
 					Color="Gray" IsRunning="true"
-					HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+					HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+				IsEnabled="false">
 				</ActivityIndicator>
 			</StackLayout>
 	</ContentView.Content>

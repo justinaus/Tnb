@@ -21,7 +21,7 @@ namespace Tnb
 		{
 			get
 			{
-				return "Images/settings.png";
+				return "Images/Broadcast/rebroad.png";
 			}
 		}
 
