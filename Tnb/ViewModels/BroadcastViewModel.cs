@@ -7,10 +7,11 @@ using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 using HtmlAgilityPack;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Tnb
 {
-	public class BroadcastViewModel : BaseViewModel, IHandleViewAppearing
+	public class BroadcastViewModel : BaseViewModel
 	{
 
 		private BroadcastPage _view;
@@ -37,12 +38,20 @@ namespace Tnb
 		}
 
 
-		public void OnViewAppearing(VisualElement view)
+		public void Start()
 		{
 			HasNetworkProblem = false;
 
 			_broadcastHeaderView.SetToday();
 		}
+
+
+		//public void OnViewAppearing(VisualElement view)
+		//{
+		//	HasNetworkProblem = false;
+
+		//	_broadcastHeaderView.SetToday();
+		//}
 
 
 		private async void onDateChanged(object sender, DateChangedEventArgs e)
@@ -111,6 +120,10 @@ namespace Tnb
 			HtmlDocument doc = new HtmlDocument();
 			doc.LoadHtml(strHTML);
 
+			List<DateTime> dateTimeSkySports = getDateTimeSkySports( doc );
+
+			if ( !getHasDate(dateTime, dateTimeSkySports) ) return group;
+
 			SkySportsModel model;
 
 			int nDayCurrent = (int)dateTime.DayOfWeek;
@@ -160,7 +173,56 @@ namespace Tnb
 				}
 			}
 
+			Debug.WriteLine( group.Count );
+
 			return group;
+		}
+
+
+		private bool getHasDate( DateTime dateTime, List<DateTime> dateTimeSkySports )
+		{
+			for (int i = 0; i < dateTimeSkySports.Count; ++i)
+			{
+				if (DateUtil.GetIsSameDate(dateTime, dateTimeSkySports[i])) return true;
+			}
+
+			return false;
+		}
+
+		private List<DateTime> getDateTimeSkySports( HtmlDocument doc )
+		{
+			List<DateTime> dtSkySports = new List<DateTime>();
+
+			DateTime dt;
+
+			foreach (HtmlNode element in doc.DocumentNode.Descendants("th"))
+			{
+				if (element.ParentNode.Name != "tr") continue;
+				if (element.ParentNode.ParentNode.Name != "thead") continue;
+				// 24 lines.
+
+				int nSeq = 0;
+
+				foreach (HtmlNode element2 in element.Descendants("p"))
+				{
+					if (element2.ParentNode != element) continue;
+
+					++nSeq;
+
+					//<p class="mb5">2017년 03월 12일</p>
+					//2:::< p class="mb0 fs15 fcolor9">일요일</p>
+
+					if (element2.GetAttributeValue("class", "") != "mb5") continue;
+
+					string strDate = element2.InnerText;
+
+					dt = Convert.ToDateTime(strDate);
+
+					dtSkySports.Add( dt );
+				}
+			}
+
+			return dtSkySports;
 		}
 
 

@@ -36,7 +36,7 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Bonkook Koo (9NZC5VWKUT)</CodesignKey>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchFloat32>true</MtouchFloat32>
@@ -46,6 +46,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>cd7d6992-081e-4d86-84a1-a55c55b64caa</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -70,7 +71,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Bonkook Koo (6GJKJ6VWY4)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -83,6 +84,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision></CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -114,20 +116,22 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon58.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon57.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon114.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\tnbicon180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon57.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon114.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon180.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Resources\Images\Justriz\" />
     <Folder Include="Resources\Images\Logo\" />
+    <Folder Include="Resources\Images\WebView\" />
+    <Folder Include="Resources\Images\TabbedPageIcons\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -142,12 +146,6 @@
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\schedule.png" />
-    <BundleResource Include="Resources\Images\schedule%402x.png" />
-    <BundleResource Include="Resources\Images\settings.png" />
-    <BundleResource Include="Resources\Images\settings%402x.png" />
-    <BundleResource Include="Resources\Images\today.png" />
-    <BundleResource Include="Resources\Images\today%402x.png" />
     <BundleResource Include="Resources\Fonts\NanumGothic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
@@ -157,15 +155,34 @@
     <BundleResource Include="Resources\Fonts\NanumGothicLight.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="Resources\Images\Justriz\justrizXamarinGrayAlmostBlack.png" />
-    <BundleResource Include="Resources\Images\Logo\tnblogolightgray.png" />
-    <BundleResource Include="Resources\Images\Justriz\justrizXamarinLightGray.png" />
     <BundleResource Include="Resources\Images\right.png" />
     <BundleResource Include="Resources\Images\left.png" />
     <BundleResource Include="Resources\Images\Broadcast\live.png" />
     <BundleResource Include="Resources\Images\Broadcast\rebroad.png" />
     <BundleResource Include="Resources\Images\Broadcast\bonbroad.png" />
     <BundleResource Include="Resources\Images\Broadcast\recordbroad.png" />
+    <BundleResource Include="Resources\Images\Logo\tnblogoonly.png" />
+    <BundleResource Include="Resources\Images\Justriz\JustrizLogoGrayAlmostBlack500.png" />
+    <BundleResource Include="Resources\Images\Justriz\JustrizLogogray500.png" />
+    <BundleResource Include="Resources\Images\WebView\webViewWeb50.png" />
+    <BundleResource Include="Resources\Images\WebView\webViewRefresh50.png" />
+    <BundleResource Include="Resources\Images\WebView\webViewHome50.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsSettings.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsSettings%402x.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsSettings%403x.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsStandings.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsStandings%402x.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsStandings%403x.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsTv.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsTv%402x.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsTv%403x.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsGames.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsGames%402x.png" />
+    <BundleResource Include="Resources\Images\TabbedPageIcons\TabbedPageIconsGames%403x.png" />
+    <BundleResource Include="Resources\Images\warning.png" />
+    <BundleResource Include="Resources\Images\WebView\webViewClose50.png" />
+    <BundleResource Include="Resources\Images\WebView\webViewLeft50.png" />
+    <BundleResource Include="Resources\Images\WebView\webViewRight50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

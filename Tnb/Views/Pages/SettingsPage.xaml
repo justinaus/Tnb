@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.SettingsPage"
-		Icon="Images/settings.png" xmlns:local="clr-namespace:Tnb">
+		Icon="Images/TabbedPageIcons/TabbedPageIconsSettings.png" xmlns:local="clr-namespace:Tnb">
 	<ContentPage.Content>
 		<StackLayout Orientation="Vertical">
 			<StackLayout Orientation="Vertical"
@@ -8,7 +8,7 @@
 				<StackLayout.Padding>
 					<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 				</StackLayout.Padding>
-				<Button Image="Images/Logo/tnblogolightgray.png"
+				<Button Image="Images/Logo/tnblogoonly.png"
 				HeightRequest="50" Margin="10" />
 			</StackLayout>
 
@@ -34,7 +34,7 @@
 										    </Label.FontFamily>
 										</Label>
 
-										<Image Source="Images/Justriz/justrizXamarinGrayAlmostBlack.png"
+										<Image Source="Images/Justriz/JustrizLogoGrayAlmostBlack500.png"
 								HeightRequest="25" IsVisible="{Binding HasImage}"/>
 								
 		                        		<Label Text="{Binding SubTitle}" TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}" FontSize="Medium"

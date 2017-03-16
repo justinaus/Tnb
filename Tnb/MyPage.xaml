@@ -25,6 +25,8 @@
 			HorizontalOptions="FillAndExpand" TextColor="White"/>
 			<Label Text="EEEEEE" BackgroundColor="#eeeeee"
 			HorizontalOptions="FillAndExpand" TextColor="White"/>
+			<Label Text="XamarinYellow" BackgroundColor="{x:Static local:ColorStruct.XamarinYellow}"
+			HorizontalOptions="FillAndExpand" TextColor="White"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

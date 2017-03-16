@@ -18,15 +18,17 @@ namespace Tnb
 
 			listViewBroadcastGame.ItemsSource = viewModel.broadcastModelList;
 			listViewBroadcastGame.ItemSelected += OnSelectedItem;
+
+			viewModel.Start();
 		}
 
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+		//protected override void OnAppearing()
+		//{
+		//	base.OnAppearing();
 
-			viewModel.OnViewAppearing(this);
-		}
+		//	viewModel.OnViewAppearing(this);
+		//}
 
 
 		private async void OnSelectedItem( object sender, SelectedItemChangedEventArgs e )

@@ -1,55 +1,55 @@
 {
   "images": [
     {
-      "filename": "tnbicon29.png",
+      "filename": "icon29.png",
       "size": "29x29",
       "scale": "1x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon58.png",
+      "filename": "icon58.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon87.png",
+      "filename": "icon87.png",
       "size": "29x29",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon80.png",
+      "filename": "icon80.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon120.png",
+      "filename": "icon120.png",
       "size": "40x40",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon57.png",
+      "filename": "icon57.png",
       "size": "57x57",
       "scale": "1x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon114.png",
+      "filename": "icon114.png",
       "size": "57x57",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon120.png",
+      "filename": "icon120.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "tnbicon180.png",
+      "filename": "icon180.png",
       "size": "60x60",
       "scale": "3x",
       "idiom": "iphone"

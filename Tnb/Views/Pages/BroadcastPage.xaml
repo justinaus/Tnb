@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage"
-		xmlns:local="clr-namespace:Tnb" Icon="Images/today.png">
+		xmlns:local="clr-namespace:Tnb" Icon="Images/TabbedPageIcons/TabbedPageIconsTv.png">
 	<ContentPage.Content>
 		<RelativeLayout>
 			<StackLayout Orientation="Vertical" x:Name="slMain"

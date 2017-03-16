@@ -141,12 +141,12 @@ namespace Tnb
 			teamTemp = arrTitle[1].Split(' ');
 			string team2 = teamTemp[0];
 
-			Debug.WriteLine( team1 + "/" + team2 );
+			//Debug.WriteLine( team1 + "/" + team2 + "::::" + model.Values );
 
-			if (model.Values.IndexOf(team1, StringComparison.Ordinal) == -1) return false;
-			if (model.Values.IndexOf(team2, StringComparison.Ordinal) == -1) return false;
+			if (model.Values.IndexOf(team1, StringComparison.Ordinal) != -1) return true;
+			if (model.Values.IndexOf(team2, StringComparison.Ordinal) != -1) return true;
 
-			return true;
+			return false;
 		}
 
 

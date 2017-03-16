@@ -17,6 +17,9 @@ namespace Tnb
 		public static Color XamarinDarkGray { get { return Color.FromHex("#7f8c8d"); } }
 		public static Color XamarinLightGray { get { return Color.FromHex("#e6ecf1"); } }
 
+		public static Color XamarinYellow { get { return Color.FromHex("#e7963b"); } }
+
+
 
 	}
 }
