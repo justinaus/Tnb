@@ -15,6 +15,9 @@ namespace Tnb
 
 		private bool IsFirst = true;
 
+		public delegate void CloseEventHandler(object sender, EventArgs e);
+		public event CloseEventHandler Closed;
+
 
 		public PopupWebviewPage()
 		{
@@ -47,6 +50,11 @@ namespace Tnb
 			switch ( e.WebViewEventType )
 			{
 				case CustomWebViewEventArgs.Types.Closed :
+					if (Closed != null)
+					{
+						Closed(this, new EventArgs());
+					}
+
 					Navigation.PopModalAsync();
 
 					break;

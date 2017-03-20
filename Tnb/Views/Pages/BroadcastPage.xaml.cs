@@ -38,6 +38,10 @@ namespace Tnb
 				return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
 			}
 
+			//DependencyService.Get<ITextToSpeech>().Speak("Hello from Xamarin Forms");
+			//Debug.WriteLine( "%%%ORIEND" +  DependencyService.Get<IDeviceOrientation>().GetOrientation());
+			//DependencyService.Get<IDeviceOrientation>().SetOrientation( false );
+
 			IBroadcastModel model = listViewBroadcastGame.SelectedItem as IBroadcastModel;
 
 			listViewBroadcastGame.SelectedItem = null;
@@ -55,10 +59,18 @@ namespace Tnb
 
 			//Application.Current.MainPage = webViewPage;
 
+			webViewPage.Closed -= OnClosed;
+			webViewPage.Closed += OnClosed;
+
 			await Navigation.PushModalAsync( webViewPage );
 
 			//Device.OpenUri(new Uri( goNaverUrl ));
 			//Device.OpenUri(new Uri( "naverplayer://" ));
+		}
+
+		private void OnClosed(object sender, EventArgs e)
+		{
+			//DependencyService.Get<IDeviceOrientation>().SetOrientation(true);
 		}
 
 

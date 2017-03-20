@@ -10,6 +10,10 @@ namespace Tnb.iOS
 	[Register("AppDelegate")]
 	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
 	{
+
+		public bool IsPortraitMode = true;
+
+
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
@@ -29,6 +33,16 @@ namespace Tnb.iOS
 			return base.FinishedLaunching(app, options);
 		}
 
+
+		//public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, UIWindow forWindow)
+		//{
+		//	if ( IsPortraitMode )
+		//	{
+		//		return UIInterfaceOrientationMask.Portrait;
+		//	}
+
+		//	return UIInterfaceOrientationMask.AllButUpsideDown;
+		//}
 
 	}
 }

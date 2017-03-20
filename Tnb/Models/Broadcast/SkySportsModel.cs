@@ -25,6 +25,14 @@ namespace Tnb
 			}
 		}
 
+		public bool IsLive
+		{
+			get
+			{
+				return Kind == BroadcastStruct.LIVE;
+			}
+		}
+
 
 	}
 }

@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace Tnb
 {
-	public partial class MyPage3 : ContentPage
+	public partial class ColorTestPage : ContentPage
 	{
-		public MyPage3()
+		public ColorTestPage()
 		{
 			InitializeComponent();
 		}

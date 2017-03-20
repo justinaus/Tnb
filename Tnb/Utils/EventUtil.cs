@@ -10,9 +10,6 @@ namespace Tnb
 
 		//public static bool IsEventHandlerRegistered(Delegate prospectiveHandler, Object obj )
 		//{
-
-
-
 		//	if (this.EventHandler != null)
 		//	{
 		//		foreach (Delegate existingHandler in this.EventHandler.GetInvocationList())

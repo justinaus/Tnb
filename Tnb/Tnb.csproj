@@ -51,22 +51,13 @@
     <EmbeddedResource Include="Views\BroadcastHeaderView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Tests\TestView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\NetworkWarningView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyPage.xaml">
+    <EmbeddedResource Include="ColorTestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyPage2.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyPage3.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyView.xaml">
+    <EmbeddedResource Include="ViewTest.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -78,7 +69,7 @@
       <DependentUpon>TnbPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Collection\ObservableCollectionCustomized.cs" />
+    <Compile Include="Collections\ObservableCollectionCustomized.cs" />
     <Compile Include="Interfaces\IHandleViewAppearing.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BroadcastViewModel.cs" />
@@ -111,34 +102,26 @@
       <DependentUpon>BroadcastHeaderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\SampleEnumeration.cs" />
-    <Compile Include="TnbPageViewModel.cs" />
-    <Compile Include="Utils\EventUtil.cs" />
     <Compile Include="Models\Broadcast\BroadcastModelGroup.cs" />
     <Compile Include="NaverDataManager.cs" />
     <Compile Include="Models\Broadcast\SkySportsModel.cs" />
-    <Compile Include="Structs\DayPartToDisplay.cs" />
-    <Compile Include="Views\Tests\TestView.xaml.cs">
-      <DependentUpon>TestView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Structs\Spotv.cs" />
-    <Compile Include="Structs\SkySports.cs" />
+    <Compile Include="Structs\DayPartToDisplayStruct.cs" />
     <Compile Include="Structs\BroadcastStruct.cs" />
     <Compile Include="Views\NetworkWarningView.xaml.cs">
       <DependentUpon>NetworkWarningView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\WebViewControl.cs" />
-    <Compile Include="MyPage.xaml.cs">
-      <DependentUpon>MyPage.xaml</DependentUpon>
+    <Compile Include="ColorTestPage.xaml.cs">
+      <DependentUpon>ColorTestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPage2.xaml.cs">
-      <DependentUpon>MyPage2.xaml</DependentUpon>
+    <Compile Include="DataControls\SkySports.cs" />
+    <Compile Include="DataControls\Spotv.cs" />
+    <Compile Include="ViewTest.xaml.cs">
+      <DependentUpon>ViewTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPage3.xaml.cs">
-      <DependentUpon>MyPage3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MyView.xaml.cs">
-      <DependentUpon>MyView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Interfaces\ITextToSpeech.cs" />
+    <Compile Include="Interfaces\IDeviceOrientation.cs" />
+    <Compile Include="Utils\EventUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
@@ -174,8 +157,7 @@
     <Folder Include="Models\Naver\" />
     <Folder Include="Views\Pages\" />
     <Folder Include="Enums\" />
-    <Folder Include="Controls\" />
-    <Folder Include="Views\Tests\" />
+    <Folder Include="DataControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -21,9 +21,9 @@
 					HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="38"
 					BackgroundColor="{x:Static local:ColorStruct.XamarinNavy}">
 				<Button x:Name="btnBack" Image="Images/WebView/webViewLeft50.png" HorizontalOptions="FillAndExpand" 
-					Margin="0,10,0,10"/>
+					Margin="0,10,0,10" IsEnabled="{Binding CanGoBack}" />
                 <Button x:Name="btnForward" Image="Images/WebView/webViewRight50.png" HorizontalOptions="FillAndExpand"
-					Margin="0,10,0,10"/>
+					Margin="0,10,0,10" IsEnabled="{Binding CanGoFoward}" />
 				<Button x:Name="btnHome" Image="Images/WebView/webViewHome50.png" HorizontalOptions="FillAndExpand"
 					Margin="0,10,0,10"/>
 				<Button x:Name="btnRefresh" Image="Images/WebView/webViewRefresh50.png" HorizontalOptions="FillAndExpand"

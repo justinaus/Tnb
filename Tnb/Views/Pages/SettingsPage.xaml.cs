@@ -10,7 +10,7 @@ namespace Tnb
 		
 		public List<PageTypeGroup> Groups = new List<PageTypeGroup> {
 			new PageTypeGroup ("서비스 정보", "A"){
-				new PageModel("버전", "v1.0")
+				new PageModel("버전", "v1.1")
 			},
 			new PageTypeGroup ("개발자 정보", "B"){
 				new PageModel( "", "문의하기", true)
@@ -39,10 +39,12 @@ namespace Tnb
 
 			listViewSetting.SelectedItem = null;
 
+			const string REFRESENTATIVE_MAIL = "justriz81@gmail.com";
+
 			switch ( model.SubTitle )
 			{
 				case "문의하기" :
-					sendMail( model.Title );
+					sendMail( REFRESENTATIVE_MAIL );
 
 					break;
 				case "후원하기" :

@@ -21,6 +21,9 @@ namespace Tnb
 
 		private bool NeedToCancel = false;
 
+		Button btnBack;
+		Button btnForward;
+
 
 		public WebViewControl( ContentPage page )
 		{
@@ -32,13 +35,16 @@ namespace Tnb
 			_webView.Navigating += webView_Navigating;
 
 			setEvents();
+
+			CanGoFoward = CanGoFoward;
+			CanGoBack = CanGoBack;
 		}
 
 
 		private void setEvents()
 		{
-			Button btnBack = _page.FindByName<Button>("btnBack");
-			Button btnForward = _page.FindByName<Button>("btnForward");
+			btnBack = _page.FindByName<Button>("btnBack");
+			btnForward = _page.FindByName<Button>("btnForward");
 			Button btnRefresh = _page.FindByName<Button>("btnRefresh");
 			Button btnWebBrowser = _page.FindByName<Button>("btnWebBrowser");
 			Button btnClose = _page.FindByName<Button>("btnClose");
@@ -92,6 +98,42 @@ namespace Tnb
 		}
 
 
+		public bool CanGoBack
+		{
+			get
+			{
+				return _webView.CanGoBack;
+			}
+
+			set
+			{
+				if (btnBack != null)
+				{
+					btnBack.Opacity = value ? 1 : 0.3;
+
+					OnPropertyChanged("CanGoBack");
+				}
+			}
+		}
+
+		public bool CanGoFoward
+		{
+			get
+			{
+				return _webView.CanGoForward;
+			}
+
+			set
+			{
+				if (btnForward != null)
+				{
+					btnForward.Opacity = value ? 1 : 0.3;
+
+					OnPropertyChanged("CanGoFoward");
+				}
+			}
+		}
+
 		private void webView_Navigating(object sender, WebNavigatingEventArgs e)
 		{
 			Debug.WriteLine( "navigating"+ e.Url );
@@ -114,6 +156,9 @@ namespace Tnb
 			if (!e.Url.StartsWith("http", StringComparison.Ordinal)) return;
 
 			IsBusy = true;
+
+			CanGoFoward = CanGoFoward;
+			CanGoBack = CanGoBack;
 		}
 
 
@@ -145,6 +190,9 @@ namespace Tnb
 			IsBusy = false;
 
 			_navigatingUrl = "";
+
+			CanGoBack = CanGoBack;
+			CanGoFoward = CanGoFoward;
 		}
 
 
@@ -168,6 +216,8 @@ namespace Tnb
 		}
 		public void backClicked(object sender, EventArgs e)
 		{
+			Debug.WriteLine( "back clicked" );
+
 			if (_webView.CanGoBack)
 			{
 				_webView.GoBack();
