@@ -10,7 +10,7 @@ namespace Tnb
 		
 		public List<PageTypeGroup> Groups = new List<PageTypeGroup> {
 			new PageTypeGroup ("서비스 정보", "A"){
-				new PageModel("버전", "v1.1")
+				new PageModel("버전", "v1.0.2")
 			},
 			new PageTypeGroup ("개발자 정보", "B"){
 				new PageModel( "", "문의하기", true)
