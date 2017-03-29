@@ -40,12 +40,36 @@ namespace Tnb
 
 		private void SetEvents()
 		{
-			btnPrev.Clicked += OnPrevClicked;
-			btnNext.Clicked += OnNextClicked;
+			//btnPrev.Clicked += OnPrevClicked;
+			//btnNext.Clicked += OnNextClicked;
 
 			var tabGestureRecognizer = new TapGestureRecognizer();
-			tabGestureRecognizer.Tapped += OnTodayClicked;
+			//tabGestureRecognizer.Tapped += OnTodayClicked;
+			tabGestureRecognizer.Tapped += OnClicked;
 			labelDate.GestureRecognizers.Add(tabGestureRecognizer);
+			btnPrev.GestureRecognizers.Add(tabGestureRecognizer);
+			btnNext.GestureRecognizers.Add(tabGestureRecognizer);
+		}
+
+
+		private void OnClicked(object sender, EventArgs e)
+		{
+			if (sender == labelDate)
+			{
+				OnTodayClicked(sender, e);
+			}
+			else if (sender == btnPrev)
+			{
+				OnPrevClicked(sender, e);
+			}
+			else if (sender == btnNext)
+			{
+				OnNextClicked(sender, e);
+			}
+			else
+			{
+
+			}
 		}
 
 

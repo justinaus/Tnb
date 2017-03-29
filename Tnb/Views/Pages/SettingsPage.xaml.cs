@@ -25,6 +25,11 @@ namespace Tnb
 			listViewSetting.ItemsSource = Groups;
 
 			listViewSetting.ItemSelected += OnSelectedItem;
+
+			if (Device.OS == TargetPlatform.Android)
+			{
+				//this.Icon = "TabbedPageIconsTv.png";
+			}
 		}
 
 

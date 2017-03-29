@@ -21,8 +21,12 @@ namespace Tnb
 
 		private bool NeedToCancel = false;
 
-		Button btnBack;
-		Button btnForward;
+		Image btnBack;
+		Image btnForward;
+		Image btnRefresh;
+		Image btnWebBrowser;
+		Image btnClose;
+		Image btnHome;
 
 
 		public WebViewControl( ContentPage page )
@@ -43,38 +47,84 @@ namespace Tnb
 
 		private void setEvents()
 		{
-			btnBack = _page.FindByName<Button>("btnBack");
-			btnForward = _page.FindByName<Button>("btnForward");
-			Button btnRefresh = _page.FindByName<Button>("btnRefresh");
-			Button btnWebBrowser = _page.FindByName<Button>("btnWebBrowser");
-			Button btnClose = _page.FindByName<Button>("btnClose");
-			Button btnHome = _page.FindByName<Button>("btnHome");
+			btnBack = _page.FindByName<Image>("btnBack");
+			btnForward = _page.FindByName<Image>("btnForward");
+			btnRefresh = _page.FindByName<Image>("btnRefresh");
+			btnWebBrowser = _page.FindByName<Image>("btnWebBrowser");
+			btnClose = _page.FindByName<Image>("btnClose");
+			btnHome = _page.FindByName<Image>("btnHome");
+
+			var tabGestureRecognizer = new TapGestureRecognizer();
+			tabGestureRecognizer.Tapped += OnClicked;
+			//labelDate.GestureRecognizers.Add(tabGestureRecognizer);
 
 			if (btnBack != null)
 			{
-				btnBack.Clicked += backClicked;
+				//btnBack.Clicked += backClicked;
+				btnBack.GestureRecognizers.Add(tabGestureRecognizer);
 			}
 			if (btnForward != null)
 			{
-				btnForward.Clicked += forwardClicked;
+				//btnForward.Clicked += forwardClicked;
+				btnForward.GestureRecognizers.Add(tabGestureRecognizer);
 			}
 			if (btnRefresh != null)
 			{
-				btnRefresh.Clicked += refreshClicked;
+				//btnRefresh.Clicked += refreshClicked;
+				btnRefresh.GestureRecognizers.Add(tabGestureRecognizer);
 			}
 			if (btnWebBrowser != null)
 			{
-				btnWebBrowser.Clicked += openSafariClicked;
+				//btnWebBrowser.Clicked += openSafariClicked;
+				btnWebBrowser.GestureRecognizers.Add(tabGestureRecognizer);
 			}
 			if (btnClose != null)
 			{
-				btnClose.Clicked += closeClicked;
+				//btnClose.Clicked += closeClicked;
+				btnClose.GestureRecognizers.Add(tabGestureRecognizer);
 			}
 			if (btnHome != null)
 			{
-				btnHome.Clicked += HomeClicked;
+				//btnHome.Clicked += HomeClicked;
+				btnHome.GestureRecognizers.Add(tabGestureRecognizer);
 			}
 		}
+
+
+		private void OnClicked(object sender, EventArgs e)
+		{
+			Debug.WriteLine( "clicked" + ( sender == btnClose ) );
+
+			if (sender == btnBack)
+			{
+				backClicked(sender, e);
+			}
+			else if (sender == btnForward)
+			{
+				forwardClicked(sender, e);
+			}
+			else if (sender == btnRefresh)
+			{
+				refreshClicked(sender, e);
+			}
+			else if (sender == btnWebBrowser)
+			{
+				openSafariClicked(sender, e);
+			}
+			else if (sender == btnClose)
+			{
+				closeClicked(sender, e);
+			}
+			else if (sender == btnHome)
+			{
+				HomeClicked(sender, e);
+			}
+			else 
+			{
+
+			}
+		}
+
 
 		public WebView GetWebView()
 		{

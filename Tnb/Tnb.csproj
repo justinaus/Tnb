@@ -57,7 +57,7 @@
     <EmbeddedResource Include="ColorTestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewTest.xaml">
+    <EmbeddedResource Include="AndroidTest.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -116,12 +116,12 @@
     </Compile>
     <Compile Include="DataControls\SkySports.cs" />
     <Compile Include="DataControls\Spotv.cs" />
-    <Compile Include="ViewTest.xaml.cs">
-      <DependentUpon>ViewTest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Interfaces\ITextToSpeech.cs" />
     <Compile Include="Interfaces\IDeviceOrientation.cs" />
     <Compile Include="Utils\EventUtil.cs" />
+    <Compile Include="AndroidTest.xaml.cs">
+      <DependentUpon>AndroidTest.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

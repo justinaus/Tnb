@@ -130,6 +130,50 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\broadcastEnterRightGray50.png" />
+    <AndroidResource Include="Resources\drawable\broadcastEnterRightGreen50.png" />
+    <AndroidResource Include="Resources\drawable\webViewClose50.png" />
+    <AndroidResource Include="Resources\drawable\webViewLeft50.png" />
+    <AndroidResource Include="Resources\drawable\webViewRight50.png" />
+    <AndroidResource Include="Resources\drawable\warning.png" />
+    <AndroidResource Include="Resources\drawable\webViewWeb50.png" />
+    <AndroidResource Include="Resources\drawable\webViewRefresh50.png" />
+    <AndroidResource Include="Resources\drawable\webViewHome50.png" />
+    <AndroidResource Include="Resources\drawable\JustrizLogoGrayAlmostBlack500.png" />
+    <AndroidResource Include="Resources\drawable\JustrizLogogray500.png" />
+    <AndroidResource Include="Resources\drawable\tnblogoonly.png" />
+    <AndroidResource Include="Resources\drawable\broadcastRe.png" />
+    <AndroidResource Include="Resources\drawable\broadcastBon.png" />
+    <AndroidResource Include="Resources\drawable\broadcastRecord.png" />
+    <AndroidResource Include="Resources\drawable\broadcastLive.png" />
+    <AndroidResource Include="Resources\drawable\broadcastHeaderRight.png" />
+    <AndroidResource Include="Resources\drawable\broadcastHeaderLeft.png" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\splash_logo.png" />
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+    <AndroidResource Include="Resources\drawable\andLauncher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\andLauncher.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\andLauncher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\andLauncher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\andIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\andIcon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\andIcon.png" />
+    <AndroidResource Include="Resources\drawable\andIcon.png" />
+    <AndroidResource Include="Resources\drawable\TabbedPageIconsGames.png" />
+    <AndroidResource Include="Resources\drawable\TabbedPageIconsStandings.png" />
+    <AndroidResource Include="Resources\drawable\TabbedPageIconsSettings.png" />
+    <AndroidResource Include="Resources\drawable\TabbedPageIconsTv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\NanumGothic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\fonts\NanumGothicBold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\fonts\NanumGothicLight.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets')" />

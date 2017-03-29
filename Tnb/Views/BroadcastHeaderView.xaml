@@ -10,18 +10,18 @@
 
 			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
 				VerticalOptions="CenterAndExpand" Margin="15">
-				<Button x:Name="btnPrev" Image="Images/left.png" HeightRequest="15" VerticalOptions="CenterAndExpand" />
+				<Image x:Name="btnPrev" Source="broadcastHeaderLeft.png" HeightRequest="15" VerticalOptions="CenterAndExpand" />
 				<Label x:Name="labelDate" Text="{Binding CurrentDate}" VerticalOptions="Center" Margin="30,0,30,0"
 						FontSize="Medium" TextColor="{x:Static local:ColorStruct.XamarinLightGray}">
 					<Label.FontFamily>
 				        <OnPlatform x:TypeArguments="x:String">
 				            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
-				            <OnPlatform.Android></OnPlatform.Android>
+				            <OnPlatform.Android>fonts/NanumGothicBold.ttf#NanumGothicBold</OnPlatform.Android>
 				            <OnPlatform.WinPhone></OnPlatform.WinPhone>
 				        </OnPlatform>
 				    </Label.FontFamily>
 				</Label>
-				<Button x:Name="btnNext" Image="Images/right.png"  HeightRequest="15" VerticalOptions="CenterAndExpand" />
+				<Image x:Name="btnNext" Source="broadcastHeaderRight.png"  HeightRequest="15" VerticalOptions="CenterAndExpand" />
 			</StackLayout>
 		</StackLayout>
 	</ContentView.Content>

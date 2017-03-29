@@ -14,15 +14,15 @@
 			<StackLayout Orientation="Horizontal"
 					HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="38"
 					BackgroundColor="{x:Static local:ColorStruct.XamarinNavy}">
-				<Button x:Name="btnClose" Image="Images/WebView/webViewClose50.png" HorizontalOptions="FillAndExpand" 
+				<Image x:Name="btnClose" Source="webViewClose50.png" HorizontalOptions="FillAndExpand" 
 					Margin="0,10,0,10"/>
-                <Button x:Name="btnBack" Image="Images/WebView/webViewLeft50.png" HorizontalOptions="FillAndExpand" 
+                <Image x:Name="btnBack" Source="webViewLeft50.png" HorizontalOptions="FillAndExpand" 
 					Margin="0,10,0,10"/>
-                <Button x:Name="btnForward" Image="Images/WebView/webViewRight50.png" HorizontalOptions="FillAndExpand" 
+                <Image x:Name="btnForward" Source="webViewRight50.png" HorizontalOptions="FillAndExpand" 
 					Margin="0,10,0,10"/>
-				<Button x:Name="btnRefresh" Image="Images/WebView/webViewRefresh50.png" HorizontalOptions="FillAndExpand" 
+				<Image x:Name="btnRefresh" Source="webViewRefresh50.png" HorizontalOptions="FillAndExpand" 
 					Margin="0,10,0,10"/>
-				<Button x:Name="btnWebBrowser" Image="Images/WebView/webViewWeb50.png" HorizontalOptions="FillAndExpand" 
+				<Image x:Name="btnWebBrowser" Source="webViewWeb50.png" HorizontalOptions="FillAndExpand" 
 					Margin="0,10,0,10"/>
             </StackLayout>
 

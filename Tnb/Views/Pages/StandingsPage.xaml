@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.StandingsPage"
-		Icon="Images/TabbedPageIcons/TabbedPageIconsStandings.png"  IsBusy="{Binding IsBusy}"
+		Icon="TabbedPageIconsStandings.png"  IsBusy="{Binding IsBusy}"
 	xmlns:local="clr-namespace:Tnb">
 	<ContentPage.Content>
 		<RelativeLayout>
@@ -20,15 +20,15 @@
 			<StackLayout Orientation="Horizontal"
 					HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="38"
 					BackgroundColor="{x:Static local:ColorStruct.XamarinNavy}">
-				<Button x:Name="btnBack" Image="Images/WebView/webViewLeft50.png" HorizontalOptions="FillAndExpand"
+				<Image x:Name="btnBack" Source="webViewLeft50.png" HorizontalOptions="FillAndExpand"
 					Margin="0,10,0,10"/>
-                <Button x:Name="btnForward" Image="Images/WebView/webViewRight50.png" HorizontalOptions="FillAndExpand"
+                <Image x:Name="btnForward" Source="webViewRight50.png" HorizontalOptions="FillAndExpand"
 					Margin="0,10,0,10"/>
-                <Button x:Name="btnHome" Image="Images/WebView/webViewHome50.png" HorizontalOptions="FillAndExpand"
+                <Image x:Name="btnHome" Source="webViewHome50.png" HorizontalOptions="FillAndExpand"
 					Margin="0,10,0,10"/>
-				<Button x:Name="btnRefresh" Image="Images/WebView/webViewRefresh50.png" HorizontalOptions="FillAndExpand"
+				<Image x:Name="btnRefresh" Source="webViewRefresh50.png" HorizontalOptions="FillAndExpand"
 					Margin="0,10,0,10"/>
-				<Button x:Name="btnWebBrowser" Image="Images/WebView/webViewWeb50.png" HorizontalOptions="FillAndExpand"
+				<Image x:Name="btnWebBrowser" Source="webViewWeb50.png" HorizontalOptions="FillAndExpand"
 					Margin="0,10,0,10"/>
             </StackLayout>
         </StackLayout>

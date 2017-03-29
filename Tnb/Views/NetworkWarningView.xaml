@@ -10,7 +10,7 @@
 				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
                                         Factor=1}">
-					<Image Source="Images/warning.png" 
+					<Image Source="warning.png" 
 					VerticalOptions="EndAndExpand" HeightRequest="50" Margin="5"/>
 
 				<Label Text="일시적인 네트워크 장애입니다.&#x0a;잠시 후 다시 시도해주세요." VerticalOptions="StartAndExpand" 
@@ -20,7 +20,7 @@
 					<Label.FontFamily>
 				        <OnPlatform x:TypeArguments="x:String">
 				            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
-				            <OnPlatform.Android></OnPlatform.Android>
+				            <OnPlatform.Android>fonts/NanumGothicBold.ttf#NanumGothicBold</OnPlatform.Android>
 				            <OnPlatform.WinPhone></OnPlatform.WinPhone>
 				        </OnPlatform>
 				    </Label.FontFamily>

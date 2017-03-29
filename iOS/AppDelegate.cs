@@ -16,6 +16,8 @@ namespace Tnb.iOS
 
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
+			//UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(0x91, 0xCA, 0x47);
+
 			global::Xamarin.Forms.Forms.Init();
 
 			// Code for starting up the Xamarin Test Cloud Agent

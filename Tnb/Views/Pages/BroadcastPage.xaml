@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage"
-		xmlns:local="clr-namespace:Tnb" Icon="Images/TabbedPageIcons/TabbedPageIconsTv.png">
+		xmlns:local="clr-namespace:Tnb" Icon="TabbedPageIconsTv.png">
 	<ContentPage.Content>
 		<RelativeLayout>
 			<StackLayout Orientation="Vertical" x:Name="slMain"
@@ -33,7 +33,7 @@
 													<Label.FontFamily>
 												        <OnPlatform x:TypeArguments="x:String">
 												            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
-												            <OnPlatform.Android></OnPlatform.Android>
+												            <OnPlatform.Android>fonts/NanumGothic.ttf#NanumGothic</OnPlatform.Android>
 												            <OnPlatform.WinPhone></OnPlatform.WinPhone>
 												        </OnPlatform>
 												    </Label.FontFamily>
@@ -42,7 +42,7 @@
 													<Label.FontFamily>
 												        <OnPlatform x:TypeArguments="x:String">
 												            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
-												            <OnPlatform.Android></OnPlatform.Android>
+												            <OnPlatform.Android>fonts/NanumGothicBold.ttf#NanumGothicBold</OnPlatform.Android>
 												            <OnPlatform.WinPhone></OnPlatform.WinPhone>
 												        </OnPlatform>
 												    </Label.FontFamily>
@@ -56,7 +56,7 @@
 												<Label.FontFamily>
 											        <OnPlatform x:TypeArguments="x:String">
 											            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
-											            <OnPlatform.Android></OnPlatform.Android>
+											            <OnPlatform.Android>fonts/NanumGothic.ttf#NanumGothic</OnPlatform.Android>
 											            <OnPlatform.WinPhone></OnPlatform.WinPhone>
 											        </OnPlatform>
 											    </Label.FontFamily>
@@ -67,8 +67,8 @@
 			                                
 			                        </StackLayout>
 
-			                        <Image Source="Images/rightGray50.png" 
-											HorizontalOptions="EndAndExpand" VerticalOptions="Center" HeightRequest="20" WidthRequest="20" IsVisible="{Binding IsLive}" />
+			                        <Image Source="broadcastEnterRightGray50.png" 
+											HorizontalOptions="EndAndExpand" VerticalOptions="Center" HeightRequest="20" WidthRequest="20" IsVisible="{Binding IsLive}" Margin="0,0,10,0" />
 											
 									</StackLayout>
 	                    </ViewCell>
@@ -87,7 +87,7 @@
 										<Label.FontFamily>
 									        <OnPlatform x:TypeArguments="x:String">
 									            <OnPlatform.iOS>NanumGothicBold</OnPlatform.iOS>
-									            <OnPlatform.Android></OnPlatform.Android>
+									            <OnPlatform.Android>fonts/NanumGothicBold.ttf#NanumGothicBold</OnPlatform.Android>
 									            <OnPlatform.WinPhone></OnPlatform.WinPhone>
 									        </OnPlatform>
 									    </Label.FontFamily>
