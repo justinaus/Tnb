@@ -10,7 +10,7 @@
 
 			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
 				VerticalOptions="CenterAndExpand" Margin="15">
-				<Image x:Name="btnPrev" Source="broadcastHeaderLeft.png" HeightRequest="15" VerticalOptions="CenterAndExpand" />
+				<Image x:Name="btnPrev" Source="broadcastHeaderLeft.png" HeightRequest="22" VerticalOptions="CenterAndExpand" />
 				<Label x:Name="labelDate" Text="{Binding CurrentDate}" VerticalOptions="Center" Margin="30,0,30,0"
 						FontSize="Medium" TextColor="{x:Static local:ColorStruct.XamarinLightGray}">
 					<Label.FontFamily>
@@ -21,7 +21,7 @@
 				        </OnPlatform>
 				    </Label.FontFamily>
 				</Label>
-				<Image x:Name="btnNext" Source="broadcastHeaderRight.png"  HeightRequest="15" VerticalOptions="CenterAndExpand" />
+				<Image x:Name="btnNext" Source="broadcastHeaderRight.png"  HeightRequest="22" VerticalOptions="CenterAndExpand" />
 			</StackLayout>
 		</StackLayout>
 	</ContentView.Content>

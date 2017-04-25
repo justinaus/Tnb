@@ -61,7 +61,8 @@ namespace Tnb
 				case CustomWebViewEventArgs.Types.NavigatedFailed :
 					if (e.TargetUrl.IndexOf(NAVERPLAYER_SCHEME, StringComparison.Ordinal) == 0)
 					{
-						Device.OpenUri(new Uri(e.TargetUrl));
+						//Device.OpenUri(new Uri(e.TargetUrl));
+						DependencyService.Get<IAppHandler>().LaunchApp( e.TargetUrl );
 					}
 
 					break;
