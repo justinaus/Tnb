@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.SettingsPage"
+		Icon="TabbedPageIconsSettings.png" xmlns:local="clr-namespace:Tnb">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical">
+			<StackLayout Orientation="Vertical"
+				BackgroundColor="{x:Static local:ColorStruct.XamarinDarkBlue}">
+				<StackLayout.Padding>
+					<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+				</StackLayout.Padding>
+				<Image Source="tnblogoonly.png"
+				HeightRequest="50" Margin="10" />
+			</StackLayout>
+
+			<ListView  x:Name="listViewSetting"
+				ItemsSource="{Binding Groups}" ItemSelected="OnSelectedItem"
+				IsGroupingEnabled="true" GroupDisplayBinding="{Binding Title}"
+	        	HasUnevenRows="true" SeparatorColor="{x:Static local:ColorStruct.XamarinGray}">
+	            <ListView.ItemTemplate>
+	                <DataTemplate>
+	                    <ViewCell>
+	                       <StackLayout Orientation="Horizontal" 
+								VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
+										 Padding="20, 20, 20, 20">
+								<local:NanumGothicLabel Text="{Binding Title}" TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}"
+									FontSize="Medium" Margin="0,0,-3,0" VerticalOptions="Center" />
+								<Image Source="JustrizLogoGrayAlmostBlack500.png"
+									HeightRequest="25" IsVisible="{Binding HasImage}"/>
+								<local:NanumGothicLabel Text="{Binding SubTitle}" TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}" FontSize="Medium"
+									VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+	                        </StackLayout>
+	                    </ViewCell>
+	                </DataTemplate>
+	            </ListView.ItemTemplate>
+
+				<ListView.GroupHeaderTemplate>
+	                <DataTemplate>
+	                    <ViewCell Height="30" >
+	                        <StackLayout Orientation="Horizontal" 
+								VerticalOptions="Center" Padding="15,0,15,0">
+								<local:NanumGothicLabel Text="{Binding Title}"
+									FontWeight="{x:Static local:FontWeightType.Bold}" FontSize="Small"
+	                                TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}" />
+							</StackLayout>
+						</ViewCell>
+	                </DataTemplate>
+	            </ListView.GroupHeaderTemplate>
+	        </ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

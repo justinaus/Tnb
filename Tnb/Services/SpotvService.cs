@@ -1,10 +1,13 @@
 ﻿using System;
-using System.Diagnostics;
-
 namespace Tnb
 {
-	public class Spotv
+	public class SpotvService
 	{
+		public SpotvService()
+		{
+		}
+
+
 		public const string URL_SPOTV = "http://www.spotv.net/";
 		public const string URL_SPOTV_DAILY = "data/json/schedule/daily.json2.asp";
 
@@ -22,11 +25,11 @@ namespace Tnb
 
 
 
-		public static string getDayPartToDisplay( string strDayPart, string strHour )
+		public static string getDayPartToDisplay(string strDayPart, string strHour)
 		{
 			string strRet = "";
 
-			int nHour = int.Parse( strHour );
+			int nHour = int.Parse(strHour);
 
 			switch (strDayPart)
 			{
@@ -52,7 +55,7 @@ namespace Tnb
 		}
 
 
-		public static string getChannelToDisplay( string strChannel )
+		public static string getChannelToDisplay(string strChannel)
 		{
 			string strRet = "";
 

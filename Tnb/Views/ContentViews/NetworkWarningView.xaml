@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.NetworkWarningView"
+	xmlns:local="clr-namespace:Tnb">
+	<ContentView.Content>
+		<RelativeLayout>
+			<StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,Factor=1}">
+				<Image Source="warning.png" 
+					VerticalOptions="EndAndExpand" HeightRequest="50" Margin="5"/>
+
+				<local:NanumGothicLabel FontWeight="Bold" Text="일시적인 네트워크 장애입니다.&#x0a;잠시 후 다시 시도해주세요." 
+					VerticalOptions="StartAndExpand" HorizontalOptions="Center"
+					FontSize="Small" TextColor="{x:Static local:ColorStruct.XamarinYellow}"
+					HorizontalTextAlignment="Center" />
+			</StackLayout>
+			<BoxView BackgroundColor="Black" Opacity="0.1"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,Factor=1}">
+			</BoxView>
+		</RelativeLayout>
+	</ContentView.Content>
+</ContentView>

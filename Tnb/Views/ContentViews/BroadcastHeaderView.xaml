@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastHeaderView"
+	xmlns:local="clr-namespace:Tnb">
+	<ContentView.Content>
+		<StackLayout Orientation="Vertical" BackgroundColor="{x:Static local:ColorStruct.XamarinDarkBlue}"
+			VerticalOptions="Start">
+			<StackLayout.Padding>
+				<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+			</StackLayout.Padding>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
+				VerticalOptions="CenterAndExpand" Margin="15">
+				<Image x:Name="btnPrev" Source="broadcastHeaderLeft.png" HeightRequest="22" VerticalOptions="CenterAndExpand" />
+				<local:NanumGothicLabel x:Name="labelDate" FontWeight="Bold" Text="{Binding CurrentDate}" VerticalOptions="Center" Margin="30,0,30,0"
+						FontSize="Medium" TextColor="{x:Static local:ColorStruct.XamarinLightGray}" />
+				<Image x:Name="btnNext" Source="broadcastHeaderRight.png"  HeightRequest="22" VerticalOptions="CenterAndExpand" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

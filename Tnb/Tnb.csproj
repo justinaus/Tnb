@@ -30,34 +30,31 @@
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
     <EmbeddedResource Include="TnbPage.xaml" />
-    <EmbeddedResource Include="Views\PopupWebviewPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\GamePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ActivityIndicatorView.xaml">
+    <EmbeddedResource Include="Views\ContentPages\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Pages\GamePage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\StandingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Pages\SettingsPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\BroadcastPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Pages\StandingsPage.xaml">
+    <EmbeddedResource Include="Views\ColorTestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Pages\BroadcastPage.xaml">
+    <EmbeddedResource Include="Views\ContentViews\WebViewerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\BroadcastHeaderView.xaml">
+    <EmbeddedResource Include="Views\ContentViews\BroadcastHeaderView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\NetworkWarningView.xaml">
+    <EmbeddedResource Include="Views\ContentPages\PopupWebviewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ColorTestPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AndroidTest.xaml">
+    <EmbeddedResource Include="Views\ContentViews\NetworkWarningView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -70,59 +67,56 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Collections\ObservableCollectionCustomized.cs" />
-    <Compile Include="Interfaces\IHandleViewAppearing.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\BroadcastViewModel.cs" />
     <Compile Include="Models\Broadcast\IBroadcastModel.cs" />
     <Compile Include="Models\Broadcast\SpotvModel.cs" />
     <Compile Include="Utils\DateUtil.cs" />
-    <Compile Include="Views\PopupWebviewPage.xaml.cs">
-      <DependentUpon>PopupWebviewPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Structs\ColorStruct.cs" />
     <Compile Include="Models\Naver\NaverGameModel.cs" />
     <Compile Include="Utils\StringUtil.cs" />
     <Compile Include="Models\Naver\NaverGameModelDailyList.cs" />
-    <Compile Include="Views\ActivityIndicatorView.xaml.cs">
-      <DependentUpon>ActivityIndicatorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\GamePage.xaml.cs">
+    <Compile Include="Views\ContentPages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\SettingsPage.xaml.cs">
+    <Compile Include="Views\ContentPages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\StandingsPage.xaml.cs">
+    <Compile Include="Views\ContentPages\StandingsPage.xaml.cs">
       <DependentUpon>StandingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\BroadcastPage.xaml.cs">
+    <Compile Include="Views\ContentPages\BroadcastPage.xaml.cs">
       <DependentUpon>BroadcastPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BroadcastHeaderView.xaml.cs">
-      <DependentUpon>BroadcastHeaderView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Enums\SampleEnumeration.cs" />
     <Compile Include="Models\Broadcast\BroadcastModelGroup.cs" />
-    <Compile Include="NaverDataManager.cs" />
     <Compile Include="Models\Broadcast\SkySportsModel.cs" />
     <Compile Include="Structs\DayPartToDisplayStruct.cs" />
     <Compile Include="Structs\BroadcastStruct.cs" />
-    <Compile Include="Views\NetworkWarningView.xaml.cs">
-      <DependentUpon>NetworkWarningView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\WebViewControl.cs" />
-    <Compile Include="ColorTestPage.xaml.cs">
-      <DependentUpon>ColorTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DataControls\SkySports.cs" />
-    <Compile Include="DataControls\Spotv.cs" />
-    <Compile Include="Interfaces\ITextToSpeech.cs" />
     <Compile Include="Interfaces\IDeviceOrientation.cs" />
     <Compile Include="Utils\EventUtil.cs" />
-    <Compile Include="AndroidTest.xaml.cs">
-      <DependentUpon>AndroidTest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Interfaces\IAppHandler.cs" />
+    <Compile Include="Views\ColorTestPage.xaml.cs">
+      <DependentUpon>ColorTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NanumGothicLabel.cs" />
+    <Compile Include="Views\ContentViews\WebViewerView.xaml.cs">
+      <DependentUpon>WebViewerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ContentViews\WebViewerViewModel.cs" />
+    <Compile Include="ViewModels\ContentPages\BroadcastViewModel.cs" />
+    <Compile Include="ViewModels\ContentPages\SettingPageViewModel.cs" />
+    <Compile Include="Views\ContentViews\BroadcastHeaderView.xaml.cs">
+      <DependentUpon>BroadcastHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ContentViews\BroadcastHeaderViewModel.cs" />
+    <Compile Include="Services\SkySportsService.cs" />
+    <Compile Include="Services\NaverService.cs" />
+    <Compile Include="Views\ContentPages\PopupWebviewPage.xaml.cs">
+      <DependentUpon>PopupWebviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentViews\NetworkWarningView.xaml.cs">
+      <DependentUpon>NetworkWarningView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SpotvService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
@@ -156,9 +150,12 @@
   <ItemGroup>
     <Folder Include="Structs\" />
     <Folder Include="Models\Naver\" />
-    <Folder Include="Views\Pages\" />
-    <Folder Include="Enums\" />
-    <Folder Include="DataControls\" />
+    <Folder Include="Views\ContentPages\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Views\ContentViews\" />
+    <Folder Include="ViewModels\ContentViews\" />
+    <Folder Include="ViewModels\ContentPages\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

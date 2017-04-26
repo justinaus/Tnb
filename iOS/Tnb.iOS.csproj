@@ -132,7 +132,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="TextToSpeech_iOS.cs" />
     <Compile Include="DeviceOrientationImplementation.cs" />
     <Compile Include="TabbedPageCustom.cs" />
     <Compile Include="AppHandler_iOS.cs" />

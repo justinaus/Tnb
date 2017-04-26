@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.BroadcastPage"
+		xmlns:local="clr-namespace:Tnb" Icon="TabbedPageIconsTv.png">
+	<ContentPage.Content>
+		<RelativeLayout>
+			<StackLayout Orientation="Vertical"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,Factor=1}">
+				
+				<local:BroadcastHeaderView x:Name="broadcastHeader" VerticalOptions="Start"
+				IsEnabled="{Binding IsBusy}"/>
+
+				<ListView  x:Name="listViewBroadcastGame" ItemsSource="{Binding BroadcastModelList}"
+					GroupDisplayBinding="{Binding Channel}" IsGroupingEnabled="true" HasUnevenRows="true"
+					SeparatorColor="{x:Static local:ColorStruct.XamarinGray}" VerticalOptions="FillAndExpand"
+					ItemSelected="OnItemSelected">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+		                    <ViewCell>
+								<StackLayout Orientation="Horizontal" >
+			                        <StackLayout Orientation="Vertical" Padding="20, 20, 20, 20">
+										<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand"
+											Padding="5,0,0,0" Spacing="2" >
+											<Image Source="{Binding ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="14" Margin="0,0,3,0"/>
+											<Label Text="{Binding DayPart}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" 
+												FontSize="Small">
+												<Label.FontFamily>
+											        <OnPlatform x:TypeArguments="x:String">
+											            <OnPlatform.iOS>NanumGothic</OnPlatform.iOS>
+											            <OnPlatform.Android>fonts/NanumGothic.ttf#NanumGothic</OnPlatform.Android>
+											            <OnPlatform.WinPhone></OnPlatform.WinPhone>
+											        </OnPlatform>
+											    </Label.FontFamily>
+											</Label>
+			                        		<local:NanumGothicLabel FontWeight="Bold" Text="{Binding Time}" TextColor="{x:Static local:ColorStruct.XamarinDarkGray}" 
+											FontSize="Small" />
+										</StackLayout>
+
+										<local:NanumGothicLabel Text="{Binding Title}"
+		                                TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}"
+											FontSize="Medium"
+												x:Name="labelTitle" />
+			                        </StackLayout>
+
+			                        <Image Source="broadcastEnterRightGray50.png" 
+											HorizontalOptions="EndAndExpand" VerticalOptions="Center" HeightRequest="20" WidthRequest="20" IsVisible="{Binding IsLive}" Margin="0,0,10,0" />
+											
+							</StackLayout>
+	                    </ViewCell>
+	                </DataTemplate>
+	            </ListView.ItemTemplate>
+
+				<ListView.GroupHeaderTemplate>
+	                <DataTemplate>
+	                    <ViewCell Height="30" >
+	                        <StackLayout Orientation="Horizontal" 
+										VerticalOptions="Center"
+										Padding="15,0,15,0">
+									<local:NanumGothicLabel Text="{Binding ChannelShow}"
+	                                TextColor="{x:Static local:ColorStruct.XamarinGrayAlmostBlack}"
+										FontSize="Small" FontWeight="Bold" />
+								</StackLayout>
+							</ViewCell>>
+	                </DataTemplate>
+	            </ListView.GroupHeaderTemplate>
+	        </ListView>
+			</StackLayout>
+
+			<local:NetworkWarningView x:Name="netWarningView" 
+				IsVisible="{Binding HasNetworkProblem}" IsEnabled="false"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,Factor=1}" />
+			
+			<ActivityIndicator Color="Gray" IsEnabled="false" 
+				IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width, Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height, Factor=1}" />
+		</RelativeLayout>
+	</ContentPage.Content>
+</ContentPage>

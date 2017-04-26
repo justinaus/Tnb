@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Tnb.WebViewerView"
+	xmlns:local="clr-namespace:Tnb">
+	<ContentView.Content>
+		<RelativeLayout >
+			<StackLayout Orientation="Vertical" BackgroundColor="{x:Static local:ColorStruct.XamarinNavy}"
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+	                                        Property=Width,Factor=1}"
+					RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+	                                        Property=Height,Factor=1}">
+				<StackLayout.Padding>
+					<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+				</StackLayout.Padding>
+				
+				<ContentView x:Name="cv" VerticalOptions="FillAndExpand"
+				Margin="0,0,0,-6"/>
+
+				<StackLayout Orientation="Horizontal"
+						HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="38"
+						BackgroundColor="{x:Static local:ColorStruct.XamarinNavy}">
+					<Image x:Name="btnBack" Source="webViewLeft50.png" HorizontalOptions="FillAndExpand" 
+						Margin="0,10,0,10" IsEnabled="{Binding CanGoBack}" Opacity="{Binding GoBackButtonOpacity}" />
+	                <Image x:Name="btnForward" Source="webViewRight50.png" HorizontalOptions="FillAndExpand"
+						Margin="0,10,0,10" IsEnabled="{Binding CanGoForward}" Opacity="{Binding GoForwardButtonOpacity}" />
+					<Image x:Name="btnHome" Source="webViewHome50.png" HorizontalOptions="FillAndExpand"
+						Margin="0,10,0,10"/>
+					<Image x:Name="btnRefresh" Source="webViewRefresh50.png" HorizontalOptions="FillAndExpand"
+						Margin="0,10,0,10"/>
+					<Image x:Name="btnWebBrowser" Source="webViewWeb50.png" HorizontalOptions="FillAndExpand"
+						Margin="0,10,0,10"/>
+	            </StackLayout>
+	        </StackLayout>
+
+			<ActivityIndicator x:Name="ai" Color="Gray" IsEnabled="false" 
+				IsRunning="{Binding IsBusy}" IsVisible="false"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width, Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height, Factor=1}" />
+		</RelativeLayout>
+	</ContentView.Content>
+</ContentView>
