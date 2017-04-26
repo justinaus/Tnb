@@ -133,7 +133,7 @@ namespace Tnb
 			{
 				//if (CustomWebViewEvent != null)
 				//{
-				//	string goUrl = _navigatingUrl == "" ? e.Url : _navigatingUrl;
+					string goUrl = navigatingUrl == "" ? e.Url : navigatingUrl;
 
 				//	//NeedToCancel = true;
 
@@ -142,6 +142,13 @@ namespace Tnb
 
 				//	//return;
 				//}
+
+				const string NAVERPLAYER_SCHEME = "naverplayer";
+
+				if (goUrl.IndexOf(NAVERPLAYER_SCHEME, StringComparison.Ordinal) == 0)
+				{
+					DependencyService.Get<IAppHandler>().LaunchApp( goUrl );
+				}
 			}
 
 			webView.Navigating += webView_Navigating;

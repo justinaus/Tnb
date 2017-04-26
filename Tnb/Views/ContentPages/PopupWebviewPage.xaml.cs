@@ -10,8 +10,6 @@ namespace Tnb
 
 		public WebViewerViewModel WebViewerVM;
 
-		private const string NAVERPLAYER_SCHEME = "naverplayer";
-
 		public delegate void CloseEventHandler(object sender, EventArgs e);
 		public event CloseEventHandler Closed;
 
