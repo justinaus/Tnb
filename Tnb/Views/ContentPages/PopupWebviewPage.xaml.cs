@@ -18,8 +18,6 @@ namespace Tnb
 		{
 			InitializeComponent();
 
-			//_webViewControl.CustomWebViewEvent += OnCustomWebViewHandler;
-
 			WebViewerVM = new WebViewerViewModel();
 			this.BindingContext = WebViewerVM;
 
@@ -53,7 +51,8 @@ namespace Tnb
 			}
 			else if (sender == btnRefresh)
 			{
-				WebViewerVM.OnClickedRefresh(sender, e);
+				//WebViewerVM.OnClickedRefresh(sender, e);
+				WebViewerVM.OnClickedHome(sender, e);
 			}
 			else if (sender == btnWebBrowser)
 			{
@@ -78,30 +77,12 @@ namespace Tnb
 			Navigation.PopModalAsync();
 		}
 
-		//private void OnCustomWebViewHandler(object sender, CustomWebViewEventArgs e)
-		//{
-		//	Debug.WriteLine( "event listened" + e.TargetUrl );
-
-		//	switch ( e.WebViewEventType )
-		//	{
-		//		case CustomWebViewEventArgs.Types.Closed :
-		//			close();
-
-		//			break;
-		//		case CustomWebViewEventArgs.Types.NavigatedFailed :
-		//			if (e.TargetUrl.IndexOf(NAVERPLAYER_SCHEME, StringComparison.Ordinal) == 0)
-		//			{
-		//				//Device.OpenUri(new Uri(e.TargetUrl));
-		//				DependencyService.Get<IAppHandler>().LaunchApp( e.TargetUrl );
-		//			}
-
-		//			break;
-		//	}
-		//}
 
 		public void OpenURL(string strURL)
 		{
+			WebViewerVM.InitUrl = strURL;
 			WebViewerVM.GoUrl( strURL );
 		}
+
 	}
 }

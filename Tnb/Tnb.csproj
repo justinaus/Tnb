@@ -92,7 +92,6 @@
     <Compile Include="Structs\DayPartToDisplayStruct.cs" />
     <Compile Include="Structs\BroadcastStruct.cs" />
     <Compile Include="Interfaces\IDeviceOrientation.cs" />
-    <Compile Include="Utils\EventUtil.cs" />
     <Compile Include="Interfaces\IAppHandler.cs" />
     <Compile Include="Views\ColorTestPage.xaml.cs">
       <DependentUpon>ColorTestPage.xaml</DependentUpon>
