@@ -77,10 +77,11 @@
 			
 			<ActivityIndicator Color="Gray" IsEnabled="false" 
 				IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
-				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
-                                        Property=Width, Factor=1}"
-				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
-                                        Property=Height, Factor=1}" />
+				WidthRequest="50" HeightRequest="50"
+				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,Factor=0.5,Constant=-25}"
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,Factor=0.5,Constant=-25}" />
 		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>
