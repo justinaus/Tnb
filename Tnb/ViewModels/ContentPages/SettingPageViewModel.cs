@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace Tnb
 {
@@ -8,7 +9,7 @@ namespace Tnb
 
 		private ObservableCollectionCustomized<PageTypeGroup> groups = new ObservableCollectionCustomized<PageTypeGroup> {
 			new PageTypeGroup ("서비스 정보", "A"){
-				new PageModel("버전", "v1.0.2")
+				new PageModel("버전", "1.0.2")
 			},
 			new PageTypeGroup ("개발자 정보", "B"){
 				new PageModel( "", "문의하기", true)
@@ -31,6 +32,8 @@ namespace Tnb
 
 		public SettingPageViewModel()
 		{
+			PageModel model = groups[0][0];
+			model.SubTitle = DependencyService.Get<IPackageInfo>().Version;
 		}
 	}
 

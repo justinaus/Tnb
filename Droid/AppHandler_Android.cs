@@ -13,6 +13,7 @@ namespace Tnb.Droid
 	{
 		public AppHandler_Android()
 		{
+			
 		}
 
 		public Task<bool> LaunchApp(string uri)

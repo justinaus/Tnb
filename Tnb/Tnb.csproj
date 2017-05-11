@@ -116,6 +116,7 @@
       <DependentUpon>NetworkWarningView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\SpotvService.cs" />
+    <Compile Include="Interfaces\IPackageInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
